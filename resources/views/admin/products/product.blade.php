@@ -1,10 +1,10 @@
 @extends('admin.index')
 @section('content')
 
-<link rel="stylesheet" href="{{ url('/') }}/design/adminlte/select2/select2.min.css">
+<link rel="stylesheet" href="{{ url('/') }}/design/Adminlte/select2/select2.min.css">
 <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" /> -->
 @push('js')
-<script src="{{ url('/design/adminlte/select2/select2.min.js') }}"></script>
+<script src="{{ url('/design/Adminlte/select2/select2.min.js') }}"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> -->
 <script type="text/javascript">
  $(document).ready(function() {

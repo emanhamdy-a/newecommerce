@@ -5,7 +5,7 @@
  <!-- AIzaSyBwOoeCbGvfFzvupmpJSODNzizgVwiEnB4 -->
  <script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyBrqoWO3aBAQ-S8Z_Oele1gYEeOc6qNRBw'></script>
  <!-- <script type="text/javascript" src='https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyBwxuW2cdXbL38w9dcPOXfGLmi1J7AVVB8'></script> -->
- <script type="text/javascript" src="{{ url('design/adminlte/dist/js/locationpicker.jquery.js') }}"></script>
+ <script type="text/javascript" src="{{ url('design/Adminlte/dist/js/locationpicker.jquery.js') }}"></script>
 <?php
   $lat = !empty(old('lat'))?old('lat'):'30.034024628931657';
   $lng = !empty(old('lng'))?old('lng'):'31.24238681793213';
@@ -19,7 +19,7 @@
           // longitude: 2.7470703125
       },
       radius: 300,
-      markerIcon: "{{ url('design/adminlte/dist/img/map-marker-2-xl.png') }}",
+      markerIcon: "{{ url('design/Adminlte/dist/img/map-marker-2-xl.png') }}",
       inputBinding: {
         latitudeInput: $('#lat'),
         longitudeInput: $('#lng'),
