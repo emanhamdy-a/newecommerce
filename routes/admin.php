@@ -13,7 +13,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/insert_db', function () {
       return view('seeder');
     });
-	// Route::group(['middleware' => 'admin:admin'], function () {
+    Route::group(['middleware' => 'admin:admin'], function () {
+    
+      Route::get('/echo_db', function () {
+        return view('heroku_db');
+      });
 
     Route::resource('admin', 'AdminController');
     Route::any('admin/destroy/all', 'AdminController@multi_delete');
@@ -73,15 +77,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', function () {
         return view('admin.home');
     });
-    Route::get('/echo_db', function () {
-        return view('heroku_db');
-    });
 
 
     Route::get('settings', 'Settings@setting');
     Route::post('settings', 'Settings@setting_save');
 
-  // });
+  });
 
   Route::get('lang/{lang}', function ($lang) {
       session()->has('lang')?session()->forget('lang'):'';
