@@ -9,10 +9,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 		Route::post('forgot/password', 'AdminAuth@forgot_password_post');
 		Route::get('reset/password/{token}', 'AdminAuth@reset_password');
     Route::post('reset/password/{token}', 'AdminAuth@reset_password_final');
+
     Route::get('/insert_db', function () {
       return view('seeder');
     });
-	Route::group(['middleware' => 'admin:admin'], function () {
+	// Route::group(['middleware' => 'admin:admin'], function () {
 
     Route::resource('admin', 'AdminController');
     Route::any('admin/destroy/all', 'AdminController@multi_delete');
@@ -80,7 +81,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('settings', 'Settings@setting');
     Route::post('settings', 'Settings@setting_save');
 
-  });
+  // });
 
   Route::get('lang/{lang}', function ($lang) {
       session()->has('lang')?session()->forget('lang'):'';
