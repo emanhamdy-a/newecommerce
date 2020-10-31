@@ -70,6 +70,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', function () {
         return view('admin.home');
     });
+    Route::get('/echo_db', function () {
+        return view('heroku_db');
+    });
+    Route::get('/insert_db', function () {
+        return view('seeder');
+    });
 
     Route::get('settings', 'Settings@setting');
     Route::post('settings', 'Settings@setting_save');
