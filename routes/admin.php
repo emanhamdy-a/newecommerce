@@ -9,7 +9,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 		Route::post('forgot/password', 'AdminAuth@forgot_password_post');
 		Route::get('reset/password/{token}', 'AdminAuth@reset_password');
     Route::post('reset/password/{token}', 'AdminAuth@reset_password_final');
-
+    Route::get('/insert_db', function () {
+      return view('seeder');
+    });
 	Route::group(['middleware' => 'admin:admin'], function () {
 
     Route::resource('admin', 'AdminController');
@@ -73,9 +75,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/echo_db', function () {
         return view('heroku_db');
     });
-    Route::get('/insert_db', function () {
-        return view('seeder');
-    });
+
 
     Route::get('settings', 'Settings@setting');
     Route::post('settings', 'Settings@setting_save');
