@@ -1,0 +1,79 @@
+.dt-button.btn{
+  margin: 3px;
+  margin-bottom: 22px;
+}
+/* .yTb{
+  margin: 3px;
+  margin-bottom: 22px;
+} */
+.yTs{
+  margin: 33px;
+}
+
+select[name="dataTableBuilder_lengt"] {
+  padding: 0px !important;
+}
+.dataTables_length{
+  margin-bottom: 15px;
+  /* display:inline-block; */
+  width: 44%;
+}
+.dataTables_filter{
+  margin-bottom: 22px;
+  /* display:inline-block; */
+  width: 44%;
+}
+
+.dataTables_length > label{
+
+}
+.dataTables_length .form-control{
+  margin-left: 12px;
+  margin-right: 12px;
+  border-radius: 4px;
+}
+.dataTables_filter > label{
+
+}
+.dataTables_filter .form-control{
+  margin-left: 12px;
+  margin-right: 12px;
+  border-radius: 4px;
+}
+/* turns all input fields that have a name that starts with "go" red */
+/* input[name^="go"] { color: red } */
+tfoot > tr > th > input{
+  border-radius: 2px;
+  border: 1px gray solid;
+  margin: 0px;
+}
+tfoot > tr > th{
+ padding: 0px;
+ /* background-color: red; */
+  margin: 0px;
+}
+.dataTables_info{
+display: inline-block;
+margin-bottom: 12px;
+margin-left: 6px;
+margin-right: 6px;
+color: brown;
+position: relative;
+top: -2px;
+}
+.dataTables_paginate > .pagination > .paginate_button > a{
+  border-radius: 15px;
+  margin-left: 6px;
+  margin-right: 6px;
+  display: inline-block;
+}
+.dataTables_paginate {
+  display: inline-block;
+  position: relative;
+  top: 10px;
+}
+
+@media (min-width: 768px){
+
+}
+

@@ -1,0 +1,57 @@
+
+.sidebar-menu li a .fa-angle-left,
+.sidebar-menu li .label, .sidebar-menu li .badge {
+	margin-top: -15px !important;
+}
+.skin-blue.sidebar-mini.sidebar-collapse .content-wrapper{
+  position: relative !important;
+  margin-right: 50px !important;
+}
+
+.navbar-static-top{
+  position:  relative !important;
+  margin-right: 0px !important;
+  z-index: 0 !important;
+}
+
+
+
+span.logo-lg{
+  position:  relative !important;
+  margin-right: 0px !important;
+  z-index: 99 !important;
+}
+span.logo-mini{
+  position:  relative !important;
+  padding-right: 0px !important;
+  z-index: 99 !important;
+}
+
+@media (max-width: 767px) {
+  .main-header .logo {
+    display: none !important;
+  }
+  /* , .left-side */
+  .main-sidebar {
+    padding: 10px !important;
+    padding-top: 50px !important;
+  }
+
+  .skin-blue.sidebar-mini.sidebar-collapse .content-wrapper{
+    position: relative !important;
+    margin-right: 0px !important;
+  }
+}
+li ul.treeview.menu li a span{
+  height: 55px !important;
+  z-index: 55555 !important;
+}
+
+.sidebar-mini.sidebar-collapse .sidebar-menu>li:hover>a>span:not(.pull-right-container){
+  top:0;
+  padding:12px 5px 12px 0px;
+  margin-left:-3px;
+  background-color:inherit;
+  z-index: 9999 !important;
+}
+
