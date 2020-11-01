@@ -6,7 +6,36 @@
   </div>
   <!-- /.box-header -->
   <div class="box-body">
-  	
+  	<?php //print_r($users); ?>
+    <table id="datatable" class="display">
+      <thead>
+          <tr>
+              <th></th>
+              <th>id</th>
+              <th>name</th>
+              <th>email</th>
+              <th>delete</th>
+              <th>edit</th>
+          </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($users as $user) { ?>
+          <tr>
+              <td> <input type="checkbox" name="user" id=""> </td>
+              <td>{{$user->id}}</td>
+              <td>{{$user->name}}</td>
+              <td>{{$user->email}}</td>
+              
+              <td>
+                <a class='user_delete' href="{{ URL::route('users.destroy', $user->id) }}"><i class='fa fa-trash'></i></a>
+              </td>
+              <td>
+                <a class='user_edit' href="/admin/users/{{$user->id}}/edit"><i class='fa fa-edit'></i></a>
+              </td>
+          </tr>
+        <?php } ?>
+      </tbody>
+    </table>
   </div>
   <!-- /.box-body -->
 </div>
@@ -52,8 +81,10 @@
 @push('js')
 <script>
   //delete_all();
+  $(document).ready( function () {
+    $('#datatable').DataTable();
+  });
 </script>
-dataTablescripts
 @endpush
 
 @endsection

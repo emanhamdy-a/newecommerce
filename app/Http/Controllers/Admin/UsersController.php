@@ -9,7 +9,9 @@ class UsersController extends Controller {
   // sDatatable
 	public function index(User $admin) {
     // return $admin->render('admin.users.index', ['title' => trans('admin.users')]);
-    return view('admin.users.index', ['title' => trans('admin.users')]);
+    $users = User::all();
+    return view('admin.users.index', ['title' => trans('admin.users'),
+    'users' => $users]);
 	}
 
 	public function create() {
@@ -68,6 +70,7 @@ class UsersController extends Controller {
 	}
 
 	public function destroy($id) {
+    dd($id);
 		User::find($id)->delete();
 		session()->flash('success', trans('admin.deleted_record'));
 		return redirect(aurl('users'));

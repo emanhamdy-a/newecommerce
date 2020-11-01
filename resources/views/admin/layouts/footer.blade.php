@@ -52,6 +52,8 @@
 <script src="{{ url('/design/Adminlte/jstree/js/jstree.wholerow.js') }}"></script>
 <script src="{{ url('/design/Adminlte/jstree/js/jstree.types.js') }}"></script>
 
+<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
 
 @stack('js')
 @stack('css')

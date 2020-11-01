@@ -166,8 +166,10 @@ return [
          * Package Service Providers...
          */
         // \Yajra\DataTables\DataTablesServiceProvider::class ,
+        // composer require yajra/laravel-datatables
         // Yajra\DataTables\ButtonsServiceProvider::class ,
-
+        // php artisan vendor:publish --provider="Yajra\DataTables\DataTablesServiceProvider"
+        // php artisan datatables:make user
         Collective\Html\HtmlServiceProvider::class ,
         /*
          * Application Service Providers...
