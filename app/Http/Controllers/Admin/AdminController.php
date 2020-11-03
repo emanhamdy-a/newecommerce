@@ -1,14 +1,15 @@
 <?php
 namespace App\Http\Controllers\Admin;
 use App\Admin;
-use App\DataTables\AdminDatatable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // use Illuminate\Validation\ValidationException;
 class AdminController extends Controller {
 
-	public function index(AdminDatatable $admin) {
-		return $admin->render('admin.admins.index', ['title' => 'Admin Control']);
+	public function index(Admin $admin) {
+    $admins = Admin::all();
+    return view('admin.admins.index', ['title' => trans('admin.admins'),
+    'admins' => $admins]);
 	}
 
 	public function create() {

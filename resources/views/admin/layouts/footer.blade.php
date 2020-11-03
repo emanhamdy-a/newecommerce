@@ -16,12 +16,6 @@
 
 <script src="{{ url('/design/Adminlte/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
 
-<link rel="stylesheet" href="{{ url('design/Adminlte') }}/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-
-<script src="{{ url('design/Adminlte') }}/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="{{ url('design/Adminlte') }}/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="{{ url('design/Adminlte') }}/bower_components/datatables.net-bs/js/dataTables.buttons.min.js"></script>
-<!-- <script src="{{ url('') }}/vendor/datatables/buttons.server-side.js"></script> -->
 
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -52,8 +46,30 @@
 <script src="{{ url('/design/Adminlte/jstree/js/jstree.wholerow.js') }}"></script>
 <script src="{{ url('/design/Adminlte/jstree/js/jstree.types.js') }}"></script>
 
-<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<!-- datatable -->
 
+
+
+ <script type="text/javascript"
+ src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+ <script type="text/javascript"
+ src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+ <script type="text/javascript"
+ src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.flash.min.js"></script>
+ <script type="text/javascript"
+ src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+ <script type="text/javascript"
+ src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+ <script type="text/javascript"
+ src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+ <script type="text/javascript"
+ src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+ <script type="text/javascript"
+ src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js
+"></script>
+ <script type="text/javascript"
+ src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js
+"></script>
 
 @stack('js')
 @stack('css')

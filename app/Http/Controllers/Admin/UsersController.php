@@ -8,8 +8,13 @@ use Illuminate\Http\Request;
 class UsersController extends Controller {
   // sDatatable
 	public function index(User $admin) {
-    // return $admin->render('admin.users.index', ['title' => trans('admin.users')]);
-    $users = User::all();
+    $users = User::orderBy('id', 'DESC')
+    ->where(function ($q) {
+      if (request()->has('level')) {
+        return $q->where('level', request('level'));
+      }
+    })->get();
+
     return view('admin.users.index', ['title' => trans('admin.users'),
     'users' => $users]);
 	}
@@ -70,8 +75,13 @@ class UsersController extends Controller {
 	}
 
 	public function destroy($id) {
-    dd($id);
+   return 'destr';
 		User::find($id)->delete();
+		session()->flash('success', trans('admin.deleted_record'));
+		return redirect(aurl('users'));
+	}
+	public function delete($id) {
+   return User::find($id)->delete();
 		session()->flash('success', trans('admin.deleted_record'));
 		return redirect(aurl('users'));
 	}

@@ -14,6 +14,9 @@
       </ol>
     </section>
 
+    <input type="hidden" name=""
+     value='<?php echo lang(); ?>' id="langug">
+
     <!-- Main content -->
     <section class="content">
       @include('admin.layouts.message')

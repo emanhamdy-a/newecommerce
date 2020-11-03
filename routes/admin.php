@@ -23,6 +23,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::any('admin/destroy/all', 'AdminController@multi_delete');
 
     Route::resource('users', 'UsersController');
+
+    Route::get('users/delete/{delete}', 'UsersController@delete');
+
     Route::any('users/destroy/all', 'UsersController@multi_delete');
 
     Route::resource('countries', 'CountriesController');
