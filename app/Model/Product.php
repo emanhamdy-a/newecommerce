@@ -98,10 +98,10 @@ class Product extends Model {
 
   public function trade_id($all=null) {
     if($all!== null){
-      return $this->hasOne('App\Model\Trademark','id', 'trade_id');
+      return $this->hasOne('App\Model\TradeMark','id', 'trade_id');
     }
     if(lang()=='ar'){
-      return $this->hasOne('App\Model\Trademark','id', 'trade_id')->value('name_ar');
+      return $this->hasOne('App\Model\TradeMark','id', 'trade_id')->value('name_ar');
     }else{
       return $this->hasOne('App\Model\Trademark','id', 'trade_id')->value('name_en');
     }

@@ -93,9 +93,9 @@
                 -- {{trans('admin.trade_id')}}--
               </option>
               @if(lang()=='ar')
-                {{$trademarks=App\Model\Trademark::orderBy('name_ar')->pluck('name_ar')}}
+                {{$trademarks=App\Model\TradeMark::orderBy('name_ar')->pluck('name_ar')}}
               @else
-                {{$trademarks=App\Model\Trademark::orderBy('name_en')->pluck('name_en')}}
+                {{$trademarks=App\Model\TradeMark::orderBy('name_en')->pluck('name_en')}}
               @endif
               @foreach($trademarks as $trademark)
               <option
