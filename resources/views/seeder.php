@@ -1,6 +1,5 @@
 <?php
 
-//users
 //admins
 DB::table('admins')->insert(    [
     ["id" => "1","name" => "Eman Hamdy","email" => "eman@example.com","password" => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi","remember_token" => "VI4zhr8jgi","created_at" => "2020-10-30 18:03:19","updated_at" => "2020-10-30 18:03:19",],
@@ -8,9 +7,15 @@ DB::table('admins')->insert(    [
     ["id" => "8","name" => "Matteo Parisian","email" => "white.vergie@example.net","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"remember_token" => "zzpEFJ0lVQ","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
     ["id" => "9","name" => "Wilma Rippin","email" => "matilde.bartell@example.com","password" => "$2y$10$90KgoN1Kc8AIeWD2E7uQ2unQVlEz1R6X0nH.bxipEoH0YilZV8D8u","remember_token" => "5fSlfwL2TO","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-11-03 14:51:51",],
     ["id" => "10","name" => "Dessie Williamson","email" => "larry.romaguera@example.net","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"remember_token" => "muwOBe4Vs2","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
-    ["id" => "13","name" => "mona","email" => "mona@example.com","password" => "$2y$10$xoCBLVBz.L/SPHXkqPoAUuS/oje7jZG1PEy3a8TGjZc5I9eeofbMS","remember_token" => "","created_at" => "2020-11-03 14:53:15","updated_at" => "2020-11-03 14:53:15",],
 ]);
 DB::statement("ALTER SEQUENCE admins_id_seq RESTART WITH 14");
+//settings
+DB::table('settings')->insert(    [
+    ["id" => "1","sitename_ar" => "goodfood","sitename_en" => "goodfood","logo" => "","icon" => "","email" => "eman@example.com","main_lang" => "ar","description" => "موقع لعرض المنتجات","keywords" => "معارض, اجهزه , معدات","status" => "open","message_maintenance" => "الموقع في حاله صيانه","created_at" => "2020-10-31 13:24:33","updated_at" => "2020-10-31 13:24:33",],
+    ["id" => "2","sitename_ar" => "goodfood","sitename_en" => "goodfood","logo" => "","icon" => "","email" => "eman@example.com","main_lang" => "ar","description" => "موقع لعرض المنتجات","keywords" => "معارض, اجهزه , معدات","status" => "open","message_maintenance" => "الموقع في حاله صيانه","created_at" => "2020-10-31 13:24:33","updated_at" => "2020-10-31 13:24:33",],
+]);
+DB::statement("ALTER SEQUENCE settings_id_seq RESTART WITH 3");
+//users
 DB::table('users')->insert(    [
     ["id" => "1","name" => "Edythe Mante Sr.","email" => "harley19@example.net","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"level" => "company","remember_token" => "de0vUi3NrL","created_at" => "2020-10-30 18:03:19","updated_at" => "2020-10-30 18:03:19",],
     ["id" => "4","name" => "Horacio Christiansen Sr.","email" => "deonte.shields@example.org","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"level" => "user","remember_token" => "fboZVOfNbt","created_at" => "2020-10-30 18:03:19","updated_at" => "2020-10-30 18:03:19",],
@@ -24,12 +29,6 @@ DB::table('users')->insert(    [
    
 ]);
 DB::statement("ALTER SEQUENCE users_id_seq RESTART WITH 25");
-//settings
-DB::table('settings')->insert(    [
-    ["id" => "1","sitename_ar" => "goodfood","sitename_en" => "goodfood","logo" => "","icon" => "","email" => "eman@example.com","main_lang" => "ar","description" => "موقع لعرض المنتجات","keywords" => "معارض, اجهزه , معدات","status" => "open","message_maintenance" => "الموقع في حاله صيانه","created_at" => "2020-10-31 13:24:33","updated_at" => "2020-10-31 13:24:33",],
-    ["id" => "2","sitename_ar" => "goodfood","sitename_en" => "goodfood","logo" => "","icon" => "","email" => "eman@example.com","main_lang" => "ar","description" => "موقع لعرض المنتجات","keywords" => "معارض, اجهزه , معدات","status" => "open","message_maintenance" => "الموقع في حاله صيانه","created_at" => "2020-10-31 13:24:33","updated_at" => "2020-10-31 13:24:33",],
-]);
-DB::statement("ALTER SEQUENCE settings_id_seq RESTART WITH 3");
 //files
 DB::table('files')->insert(    [
     ["id" => "1","name" => "Lighthouse.jpg","size" => "561276","file" => "8djE6KEWXwY3rLphyZ4HFgbIKX2d55W6hhJj8WkH.jpeg","path" => "products/7","full_file" => "products/7/8djE6KEWXwY3rLphyZ4HFgbIKX2d55W6hhJj8WkH.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "7","created_at" => "2020-11-04 20:17:32","updated_at" => "2020-11-04 20:17:32",],
