@@ -1,6 +1,16 @@
 <?php
 
 //users
+//admins
+DB::table('admins')->insert(    [
+    ["id" => "1","name" => "Eman Hamdy","email" => "eman@example.com","password" => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi","remember_token" => "VI4zhr8jgi","created_at" => "2020-10-30 18:03:19","updated_at" => "2020-10-30 18:03:19",],
+    ["id" => "3","name" => "Dasia Kreiger","email" => "delores.lubowitz@example.com","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"remember_token" => "y1qSt4YOVA","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
+    ["id" => "8","name" => "Matteo Parisian","email" => "white.vergie@example.net","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"remember_token" => "zzpEFJ0lVQ","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
+    ["id" => "9","name" => "Wilma Rippin","email" => "matilde.bartell@example.com","password" => "$2y$10$90KgoN1Kc8AIeWD2E7uQ2unQVlEz1R6X0nH.bxipEoH0YilZV8D8u","remember_token" => "5fSlfwL2TO","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-11-03 14:51:51",],
+    ["id" => "10","name" => "Dessie Williamson","email" => "larry.romaguera@example.net","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"remember_token" => "muwOBe4Vs2","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
+    ["id" => "13","name" => "mona","email" => "mona@example.com","password" => "$2y$10$xoCBLVBz.L/SPHXkqPoAUuS/oje7jZG1PEy3a8TGjZc5I9eeofbMS","remember_token" => "","created_at" => "2020-11-03 14:53:15","updated_at" => "2020-11-03 14:53:15",],
+]);
+DB::statement("ALTER SEQUENCE admins_id_seq RESTART WITH 14");
 DB::table('users')->insert(    [
     ["id" => "1","name" => "Edythe Mante Sr.","email" => "harley19@example.net","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"level" => "company","remember_token" => "de0vUi3NrL","created_at" => "2020-10-30 18:03:19","updated_at" => "2020-10-30 18:03:19",],
     ["id" => "4","name" => "Horacio Christiansen Sr.","email" => "deonte.shields@example.org","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"level" => "user","remember_token" => "fboZVOfNbt","created_at" => "2020-10-30 18:03:19","updated_at" => "2020-10-30 18:03:19",],
@@ -44,14 +54,6 @@ DB::table('countries')->insert(    [
     ["id" => "8","country_name_ar" => "مصر","country_name_en" => "egypt","mob" => "1234","code" => "eg","currency_ar" => "جنيه مصري","currency_en" => "egyption pound","logo" => "countries/TSoJEMTdcvRVn90AOOXUXWczOrjzHQlP0eGkX50s.jpeg","created_at" => "2020-11-03 15:06:31","updated_at" => "2020-11-03 20:39:27",],
 ]);
 DB::statement("ALTER SEQUENCE countries_id_seq RESTART WITH 9");
-//departments
-DB::table('departments')->insert(    [
-    ["id" => "1","dep_name_ar" => "سيارات","dep_name_en" => "cars","icon" => "","description" => "","keyword" => "","parent" => "","created_at" => "2020-11-03 23:18:20","updated_at" => "2020-11-04 23:18:20",],
-    ["id" => "2","dep_name_ar" => "كمبيوتر","dep_name_en" => "computer","icon" => "","description" => "","keyword" => "","parent" => "5","created_at" => "2020-11-03 23:20:07","updated_at" => "2020-11-04 23:24:21",],
-    ["id" => "3","dep_name_ar" => "كمبيوتر شخصي","dep_name_en" => "laptop","icon" => "","description" => "","keyword" => "","parent" => "2","created_at" => "2020-11-03 23:20:42","updated_at" => "2020-11-04 23:25:12",],
-    ["id" => "5","dep_name_ar" => "اجهزه","dep_name_en" => "Devices","icon" => "","description" => "","keyword" => "","parent" => "","created_at" => "2020-11-03 23:23:56","updated_at" => "2020-11-04 23:23:56",],
-]);
-DB::statement("ALTER SEQUENCE departments_id_seq RESTART WITH 6");
 //trade_marks
 DB::table('trade_marks')->insert(    [
     ["id" => "2","name_ar" => "اتش","name_en" => "hp","logo" => "trademarks/wQFBmTQj2I4Sqq0uKdUh1avsZaAqtNsZkW68Q1wS.jpeg","created_at" => "2020-11-04 00:06:04","updated_at" => "2020-11-04 00:17:44",],
@@ -71,6 +73,14 @@ DB::table('colors')->insert(    [
     ["id" => "4","name_ar" => "احمر","name_en" => "red","color" => "#df1111","created_at" => "2020-11-04 04:13:12","updated_at" => "2020-11-04 04:19:01",],
 ]);
 DB::statement("ALTER SEQUENCE colors_id_seq RESTART WITH 5");
+//departments
+DB::table('departments')->insert(    [
+    ["id" => "1","dep_name_ar" => "سيارات","dep_name_en" => "cars","icon" => "","description" => "","keyword" => "","parent" => "","created_at" => "2020-11-03 23:18:20","updated_at" => "2020-11-04 23:18:20",],
+    ["id" => "2","dep_name_ar" => "كمبيوتر","dep_name_en" => "computer","icon" => "","description" => "","keyword" => "","parent" => "5","created_at" => "2020-11-03 23:20:07","updated_at" => "2020-11-04 23:24:21",],
+    ["id" => "3","dep_name_ar" => "كمبيوتر شخصي","dep_name_en" => "laptop","icon" => "","description" => "","keyword" => "","parent" => "2","created_at" => "2020-11-03 23:20:42","updated_at" => "2020-11-04 23:25:12",],
+    ["id" => "5","dep_name_ar" => "اجهزه","dep_name_en" => "Devices","icon" => "","description" => "","keyword" => "","parent" => "","created_at" => "2020-11-03 23:23:56","updated_at" => "2020-11-04 23:23:56",],
+]);
+DB::statement("ALTER SEQUENCE departments_id_seq RESTART WITH 6");
 //sizes
 DB::table('sizes')->insert(    [
     ["id" => "1","name_ar" => "بوصه","name_en" => "inch","is_public" => "yes","department_id" => "2","created_at" => "2020-11-04 04:32:09","updated_at" => "2020-11-04 04:32:09",],
@@ -95,14 +105,5 @@ DB::table('products')->insert(    [
     ["id" => "76","title" => "Lorem ipsum good sit amet, consectetur","photo" => "products/76/UOKojeFWGzJ4Kpxm7SoFzIUWwjc9y4.jpeg","content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus condimentum non augue vel euismod. Cras quam erat, euismod vitae sapien egestas, vestibulum egestas dui. Ut molestie euismod neque eu eleifend. Sed tristique et sapien et pretium. Donec non mi vitae nunc imperdi et convallis. Maecenas rutrum mi vitae leo luctus, vitae faucibus ex cursus. Proin luctus fermentum cursus. Nunc scelerisque, tortor a luctus finibus, massa odio tincidunt tor tor, at vestibulum risus orci eget dui. Phasellus nec ex ac velit venenatis dictum. Praesent vi tae risus fringilla, congue neque sed, pulvinar velit. Done c ut facilisis nibh. Cras sed ipsum et tellus ornare efficitur.","department_id" => "1","trade_id" => "9","manu_id" => "3","color_id" => "2","size" => "","size_id" => "","currency_id" => "","price" => "84.00","stock" => "56","country_id" => "","start_at" => "2020-11-01","end_at" => "2020-11-02","start_offer_at" => "2020-11-17","end_offer_at" => "2020-11-19","price_offer" => "117.00","other_data" => "","weight" => "3","weight_id" => "1","status" => "pending","reason" => "","created_at" => "2020-11-05 15:23:29","updated_at" => "2020-11-05 15:23:29",],
 ]);
 DB::statement("ALTER SEQUENCE products_id_seq RESTART WITH 77");
-//admins
-DB::table('admins')->insert(    [
-    ["id" => "1","name" => "Eman Hamdy","email" => "eman@example.com","password" => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi","remember_token" => "VI4zhr8jgi","created_at" => "2020-10-30 18:03:19","updated_at" => "2020-10-30 18:03:19",],
-    ["id" => "3","name" => "Dasia Kreiger","email" => "delores.lubowitz@example.com","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"remember_token" => "y1qSt4YOVA","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
-    ["id" => "8","name" => "Matteo Parisian","email" => "white.vergie@example.net","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"remember_token" => "zzpEFJ0lVQ","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
-    ["id" => "9","name" => "Wilma Rippin","email" => "matilde.bartell@example.com","password" => "$2y$10$90KgoN1Kc8AIeWD2E7uQ2unQVlEz1R6X0nH.bxipEoH0YilZV8D8u","remember_token" => "5fSlfwL2TO","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-11-03 14:51:51",],
-    ["id" => "10","name" => "Dessie Williamson","email" => "larry.romaguera@example.net","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"remember_token" => "muwOBe4Vs2","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
-    ["id" => "13","name" => "mona","email" => "mona@example.com","password" => "$2y$10$xoCBLVBz.L/SPHXkqPoAUuS/oje7jZG1PEy3a8TGjZc5I9eeofbMS","remember_token" => "","created_at" => "2020-11-03 14:53:15","updated_at" => "2020-11-03 14:53:15",],
-]);
-DB::statement("ALTER SEQUENCE admins_id_seq RESTART WITH 14");unlink(__FILE__);
+unlink(__FILE__);
 ?>
