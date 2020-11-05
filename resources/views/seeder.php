@@ -16,8 +16,8 @@ DB::table('users')->insert(    [
 DB::statement("ALTER SEQUENCE users_id_seq RESTART WITH 35");
 //settings
 DB::table('settings')->insert(    [
-    ["id" => "1","sitename_ar" => "goodfood","sitename_en" => "goodfood","logo" => "","icon" => "","email" => "eman@example.com","main_lang" => "ar","description" => "موقع لعرض المنتجات","keywords" => "معارض, اجهزه , معدات","status" => "open","message_maintenance" => "الموقع في حاله صيانه","created_at" => "","updated_at" => "2020-10-31 13:24:33",],
-    ["id" => "2","sitename_ar" => "goodfood","sitename_en" => "goodfood","logo" => "","icon" => "","email" => "eman@example.com","main_lang" => "ar","description" => "موقع لعرض المنتجات","keywords" => "معارض, اجهزه , معدات","status" => "open","message_maintenance" => "الموقع في حاله صيانه","created_at" => "","updated_at" => "2020-10-31 13:24:33",],
+    ["id" => "1","sitename_ar" => "goodfood","sitename_en" => "goodfood","logo" => "","icon" => "","email" => "eman@example.com","main_lang" => "ar","description" => "موقع لعرض المنتجات","keywords" => "معارض, اجهزه , معدات","status" => "open","message_maintenance" => "الموقع في حاله صيانه","created_at" => "2020-10-31 13:24:33","updated_at" => "2020-10-31 13:24:33",],
+    ["id" => "2","sitename_ar" => "goodfood","sitename_en" => "goodfood","logo" => "","icon" => "","email" => "eman@example.com","main_lang" => "ar","description" => "موقع لعرض المنتجات","keywords" => "معارض, اجهزه , معدات","status" => "open","message_maintenance" => "الموقع في حاله صيانه","created_at" => "2020-10-31 13:24:33","updated_at" => "2020-10-31 13:24:33",],
 ]);
 DB::statement("ALTER SEQUENCE settings_id_seq RESTART WITH 3");
 //files
