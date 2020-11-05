@@ -9,9 +9,14 @@ DB::table('users')->insert(    [
    
 ]);
 DB::statement("ALTER SEQUENCE users_id_seq RESTART WITH 18");
+//admins
+DB::table('admins')->insert(    [
+    ["id" => "1","name" => "Eman Hamdy","email" => "eman@example.com","password" => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi","remember_token" => "VI4zhr8jgi","created_at" => "2020-10-30 18:03:19","updated_at" => "2020-10-30 18:03:19",],
+]);
+DB::statement("ALTER SEQUENCE admins_id_seq RESTART WITH 4");
 //settings
 DB::table('settings')->insert(    [
-    ["id" => "1","sitename_ar" => "goodfood","sitename_en" => "goodfood","logo" => "","icon" => "","email" => "eman@example.com","main_lang" => "ar","description" => "موقع لعرض المنتجات","keywords" => "معارض, اجهزه , معدات","status" => "open","message_maintenance" => "الموقع في حاله صيانه","created_at" => "2020-9-31","updated_at" => "2020-10-31",],
+    ["id" => "1","sitename_ar" => "goodfood","sitename_en" => "goodfood","logo" => "","icon" => "","email" => "eman@example.com","main_lang" => "ar","description" => "موقع لعرض المنتجات","keywords" => "معارض, اجهزه , معدات","status" => "open","message_maintenance" => "الموقع في حاله صيانه","created_at" => "2020-10-30 18:03:19","updated_at" => "2020-10-30 18:03:19",],
 ]);
 DB::statement("ALTER SEQUENCE settings_id_seq RESTART WITH 3");
 //files
@@ -89,10 +94,6 @@ DB::table('products')->insert(    [
     ["id" => "76","title" => "Lorem ipsum good sit amet, consectetur","photo" => "products/76/UOKojeFWGzJ4Kpxm7SoFzIUWwjc9y4.jpeg","content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus condimentum non augue vel euismod. Cras quam erat, euismod vitae sapien egestas, vestibulum egestas dui. Ut molestie euismod neque eu eleifend. Sed tristique et sapien et pretium. Donec non mi vitae nunc imperdi et convallis. Maecenas rutrum mi vitae leo luctus, vitae faucibus ex cursus. Proin luctus fermentum cursus. Nunc scelerisque, tortor a luctus finibus, massa odio tincidunt tor tor, at vestibulum risus orci eget dui. Phasellus nec ex ac velit venenatis dictum. Praesent vi tae risus fringilla, congue neque sed, pulvinar velit. Done c ut facilisis nibh. Cras sed ipsum et tellus ornare efficitur.","department_id" => "1","trade_id" => "9","manu_id" => "3","color_id" => "2","size" => "","size_id" => "","currency_id" => "","price" => "84.00","stock" => "56","country_id" => "","start_at" => "2020-11-01","end_at" => "2020-11-02","start_offer_at" => "2020-11-17","end_offer_at" => "2020-11-19","price_offer" => "117.00","other_data" => "","weight" => "3","weight_id" => "1","status" => "pending","reason" => "","created_at" => "2020-11-05 15:23:29","updated_at" => "2020-11-05 15:23:29",],
 ]);
 DB::statement("ALTER SEQUENCE products_id_seq RESTART WITH 77");
-//admins
-DB::table('admins')->insert(    [
-    ["id" => "1","name" => "Eman Hamdy","email" => "eman@example.com","password" => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi","remember_token" => "VI4zhr8jgi","created_at" => "2020-10-30 18:03:19","updated_at" => "2020-10-30 18:03:19",],
-    ["id" => "3","name" => "Dasia Kreiger","email" => "delores.lubowitz@example.com","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"remember_token" => "y1qSt4YOVA","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
-]);
-DB::statement("ALTER SEQUENCE admins_id_seq RESTART WITH 4");unlink(__FILE__);
+
+unlink(__FILE__);
 ?>
