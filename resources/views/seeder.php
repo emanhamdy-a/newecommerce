@@ -46,10 +46,10 @@ DB::table('countries')->insert(    [
 DB::statement("ALTER SEQUENCE countries_id_seq RESTART WITH 9");
 //departments
 DB::table('departments')->insert(    [
-    ["id" => "1","dep_name_ar" => "سيارات","dep_name_en" => "cars","icon" => "","description" => "","keyword" => "","parent" => "","created_at" => "2020-11-03 23:18:20","updated_at" => "2020-11-03 23:18:20",],
-    ["id" => "2","dep_name_ar" => "كمبيوتر","dep_name_en" => "computer","icon" => "","description" => "","keyword" => "","parent" => "5","created_at" => "2020-11-03 23:20:07","updated_at" => "2020-11-03 23:24:21",],
-    ["id" => "3","dep_name_ar" => "كمبيوتر شخصي","dep_name_en" => "laptop","icon" => "","description" => "","keyword" => "","parent" => "2","created_at" => "2020-11-03 23:20:42","updated_at" => "2020-11-03 23:25:12",],
-    ["id" => "5","dep_name_ar" => "اجهزه","dep_name_en" => "Devices","icon" => "","description" => "","keyword" => "","parent" => "","created_at" => "2020-11-03 23:23:56","updated_at" => "2020-11-03 23:23:56",],
+    ["id" => "1","dep_name_ar" => "سيارات","dep_name_en" => "cars","icon" => "","description" => "","keyword" => "","parent" => "","created_at" => "2020-11-03 23:18:20","updated_at" => "2020-11-04 23:18:20",],
+    ["id" => "2","dep_name_ar" => "كمبيوتر","dep_name_en" => "computer","icon" => "","description" => "","keyword" => "","parent" => "5","created_at" => "2020-11-03 23:20:07","updated_at" => "2020-11-04 23:24:21",],
+    ["id" => "3","dep_name_ar" => "كمبيوتر شخصي","dep_name_en" => "laptop","icon" => "","description" => "","keyword" => "","parent" => "2","created_at" => "2020-11-03 23:20:42","updated_at" => "2020-11-04 23:25:12",],
+    ["id" => "5","dep_name_ar" => "اجهزه","dep_name_en" => "Devices","icon" => "","description" => "","keyword" => "","parent" => "","created_at" => "2020-11-03 23:23:56","updated_at" => "2020-11-04 23:23:56",],
 ]);
 DB::statement("ALTER SEQUENCE departments_id_seq RESTART WITH 6");
 //trade_marks
