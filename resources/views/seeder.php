@@ -11,10 +11,6 @@ DB::table('users')->insert(    [
     ["id" => "21","name" => "Clay Brakus MD","email" => "rosalee.daniel@example.com","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"level" => "user","remember_token" => "n7qlemqw0U","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
     ["id" => "22","name" => "Arch Howe","email" => "eman@example.com","password" => "$2y$10$.o1Hx/yaRxoWtCY0Z0WOSuWMJGNlrXP4FiF7u3CWJs/Q0Cx84uvBC","level" => "vendor","remember_token" => "1dV7Zfa6I6","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-11-03 13:48:19",],
     ["id" => "24","name" => "Mr. Saige Pacocha I","email" => "myriam.emmerich@example.org","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"level" => "company","remember_token" => "PkSHwRGJwV","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
-    ["id" => "25","name" => "Adan Lindgren","email" => "pfannerstill.mary@example.com","password" => "$2y$10$OGtLRai1N.GfPW04zRj6PuGNW.JPoeXb4thhw12lVR0Cmn/aNjarW","level" => "user","remember_token" => "xl7E4sgCBA","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-11-03 05:23:32",],
-    ["id" => "27","name" => "Prof. Hershel Dietrich IV","email" => "arthur.fadel@example.com","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"level" => "company","remember_token" => "xTgTYJJ8RV","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
-    ["id" => "31","name" => "ali","email" => "ali@example.com","password" => "$2y$10$9UboOvCqnssqMnHkomBrSu9OUi6jQXNw6GOyWTu6PcJrPju5vojz.","level" => "user","remember_token" => "","created_at" => "2020-11-02 18:39:58","updated_at" => "2020-11-02 18:39:58",],
-    ["id" => "32","name" => "nanna","email" => "nanna@example.com","password" => "$2y$10$8QTGcv9cZYeu4WqbBNjdNuG2UxeG0Hj6UW/fVwvqVxdlldmC8jtQ6","level" => "vendor","remember_token" => "","created_at" => "2020-11-03 13:48:49","updated_at" => "2020-11-03 13:48:49",],
    
 ]);
 DB::statement("ALTER SEQUENCE users_id_seq RESTART WITH 35");
