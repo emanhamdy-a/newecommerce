@@ -30,8 +30,13 @@
      </div>
 
      <div class="form-group">
-        {!! Form::label('currency',trans('admin.currency')) !!}
-        {!! Form::text('currency',old('currency'),['class'=>'form-control']) !!}
+        {!! Form::label('currency_ar',trans('admin.currency_ar')) !!}
+        {!! Form::text('currency_ar',old('currency_ar'),['class'=>'form-control']) !!}
+     </div>
+
+     <div class="form-group">
+        {!! Form::label('currency_en',trans('admin.currency_en')) !!}
+        {!! Form::text('currency_en',old('currency_en'),['class'=>'form-control']) !!}
      </div>
 
      <div class="form-group">

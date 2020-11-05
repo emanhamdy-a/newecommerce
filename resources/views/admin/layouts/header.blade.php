@@ -16,12 +16,14 @@
   @if(direction() == 'ltr')
   <link rel="stylesheet" href="{{ url('/') }}/design/Adminlte/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="{{ url('/') }}/design/Adminlte/jstree/default/style.css">
+  <link rel="stylesheet" href="{{ url('/') }}/css/style.css">
   @else
   <link rel="stylesheet" href="{{ url('/') }}/design/Adminlte/dist/css/rtl/AdminLTE.min.css">
   <link rel="stylesheet" href="{{ url('/') }}/design/Adminlte/dist/css/rtl/bootstrap-rtl.min.css">
   <link rel="stylesheet" href="{{ url('/') }}/design/Adminlte/dist/css/rtl/rtl.css">
   <link rel="stylesheet" href="{{ url('/') }}/design/Adminlte/dist/css/fonts/cairo.css">
   <link rel="stylesheet" href="{{ url('/') }}/design/Adminlte/jstree/default/style.css">
+  <link rel="stylesheet" href="{{ url('/') }}/css/stylertl.css">
   <!-- <link href="https://fonts.googleapis.com/css?family=Cairo:300,400&amp;subset=arabic,latin-ext" rel="stylesheet"> -->
   <style type="text/css">
     html,body,h1,h2,h3,h4,h5,h6,a,span,li,ul,.alert{
@@ -41,9 +43,6 @@
   <link rel="stylesheet" href="{{ url('/') }}/design/Adminlte/select2/select2.min.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{ url('/') }}/design/Adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css">
-
-  <link rel="stylesheet" href="{{ url('/') }}/css/style.css">
-
 
   <script src="{{ url('/design/Adminlte/dist/js/myfunctions.js') }}"></script>
 

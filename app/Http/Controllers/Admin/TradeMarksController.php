@@ -1,6 +1,5 @@
 <?php
 namespace App\Http\Controllers\Admin;
-use App\DataTables\TradeMarkDatatable;
 use App\Http\Controllers\Controller;
 use App\Model\TradeMark;
 use Illuminate\Http\Request;
@@ -12,10 +11,11 @@ class TradeMarksController extends Controller {
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index(TradeMarkDatatable $trade) {
-		return $trade->render('admin.trademarks.index', ['title' => trans('admin.trademarks')]);
+	public function index(TradeMark $trade) {
+		$trademarks = TradeMark::orderBy('id','DESC')->get();
+		return view('admin.trademarks.index', ['title' => trans('admin.trademarks'),
+		'trademarks' => $trademarks]);
 	}
-
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -95,6 +95,16 @@ class TradeMarksController extends Controller {
 		$trademarks->delete();
 		session()->flash('success', trans('admin.deleted_record'));
 		return redirect(aurl('trademarks'));
+	}
+	public function delete($id) {
+		$trademarks = TradeMark::find($id);
+		if($trademarks->logo){
+			Storage::delete('public/' . $trademarks->logo);
+		}
+		return $trademarks->delete();
+		
+		session()->flash('success', trans('admin.deleted_record'));
+		 redirect(aurl('trademarks'));
 	}
 
 	public function multi_delete() {

@@ -13,7 +13,7 @@
         echo"?php<br>";
         // $tables = DB::select('SHOW TABLES');
         // $tables = DB::select("SELECT table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE' AND table_schema = 'learn_code' ORDER BY CREATE_TIME desc");
-        $tables=['users','password_resets','settings','files','countries','cities','states','departments','trade_marks','manufacturers','shippings','malls','colors','sizes','weights','products','other_datas','mall_products','jobs','admins'];
+        $tables=['users','password_resets','settings','files','countries','cities','states','departments','trade_marks','manufactures','shippings','malls','colors','sizes','weights','products','other_datas','mall_products','jobs','admins'];
             // $table = get_object_vars( $table );
             foreach ($tables as $index => $tablnm) {
                 $records = DB::table($tablnm)->get();

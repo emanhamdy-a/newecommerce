@@ -76,20 +76,19 @@ tfoot > tr > th{
   margin-left: 10px !important;
   margin-right: 10px !important;
 }
-/* table.dataTable.nowrap th, table.dataTable.nowrap td { */
-table.dataTable.nowrap td {
+ table.dataTable.nowrap td {
   white-space: normal !important;
   min-width: 80px !important;
 }
 
 .child .dtr-title{
-  margin-right: 16px !important;
+  margin-left: 16px !important;
 }
 @media (min-width: 768px){
   .child ul.dtr-details li{
    width: 45% !important;
-   float: left;
-   margin-right: 20px !important;
+   float: right;
+   margin-left: 20px !important;
   }
 }
 /* .child ul.dtr-details {

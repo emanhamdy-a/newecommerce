@@ -28,7 +28,7 @@ class CreateProductsTable extends Migration
          $table->foreign('trade_id')->references('id')->on('trade_marks')->onDelete('cascade');
 
          $table->integer('manu_id')->unsigned()->nullable();
-         $table->foreign('manu_id')->references('id')->on('manufacturers')->onDelete('cascade');
+         $table->foreign('manu_id')->references('id')->on('manufactures')->onDelete('cascade');
 /*
 $table->integer('mall_id')->unsigned()->nullable();
 $table->foreign('mall_id')->references('id')->on('malls')->onDelete('cascade');

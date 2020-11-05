@@ -118,6 +118,7 @@ function push_functions() {
       success: function(data) {
         $('.wrong').css('display','none');
         $('.done').css('display','block');
+        $('.allElements .container'+sendId).next('.child').remove();
         $('.allElements .container'+sendId).remove();
         setTimeout(() => {
           $('.done').css('display','none');

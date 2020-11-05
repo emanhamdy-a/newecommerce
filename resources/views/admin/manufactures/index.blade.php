@@ -22,7 +22,7 @@
     <table class='filter'>
       <tr>
         <td>
-          <a class='size_create btn btn-info' href="/admin/sizes/create">+ {{trans('admin.add')}}</i></a>
+          <a class='manufacture_create btn btn-info' href="/admin/manufactures/create">+ {{trans('admin.add')}}</i></a>
         </td>
         <td>
           <a class="btn btn-danger delBtn m-y" tabindex="0"><span><i class="fa fa-trash"></i></span></a>
@@ -36,7 +36,7 @@
       </tr>
     </table>
       <br>
-    {!! Form::open(['id'=>'form_data','url'=>aurl('sizes/destroy/all'),'method'=>'delete']) !!}
+    {!! Form::open(['id'=>'form_data','url'=>aurl('manufactures/destroy/all'),'method'=>'delete']) !!}
       <table id="datatable" style='width:100% !important;'
         class="display responsive nowrap">
         <thead>
@@ -47,8 +47,14 @@
                 </th>
                 <th>id</th>
                 <th>{{trans('admin.name')}}</th>
-                <th>{{trans('admin.department')}}</th>
-                <th>{{trans('admin.public')}}</th>
+                <th>{{trans('admin.email')}}</th>
+                <th>{{trans('admin.contact_name')}}</th>
+                <th>{{trans('admin.phone')}}</th>
+                <th>{{trans('admin.website')}}</th>
+                <th>{{trans('admin.logo')}}</th>
+                <th>{{trans('admin.address')}}</th>
+                <th>{{trans('admin.facebook')}}</th>
+                <th>{{trans('admin.twitter')}}</th>
                 <th>{{trans('admin.created_at')}}</th>
                 <th>{{trans('admin.updated_at')}}</th>
                 <th>{{trans('admin.delete')}}</th>
@@ -56,34 +62,40 @@
             </tr>
         </thead>
 
-
         <tbody>
-          <?php foreach ($sizes as $size) { ?>
-            <tr class='container{{ $size->id }}'>
-              <td> <input type="checkbox" name="item[]"
-               class="item_checkbox" value="{{ $size->id }}"> </td>
-              <td>{{$size->id}}</td>
+          <?php foreach ($manufactures as $manufacture) { ?>
+            <tr class='container{{ $manufacture->id }}'>
+              <td> <input type="checkbox" name="item[]" class="item_checkbox" value="{{ $manufacture->id }}"> </td>
+              <td>{{$manufacture->id}}</td>
               <td>
                 <?php //if(lang()=='ar'){ ?>
-                  {{lang()=='ar' ? $size->name_ar : $size->name_en}}
+                  {{lang()=='ar' ? $manufacture->name_ar : $manufacture->name_en}}
                 <?php //} ?>
               </td>
-              <td> 
-                {{lang()=='ar' ? $size->department_id()->first()->dep_name_ar : $size->department_id()->first()->dep_name_en}}
+              <td>{{$manufacture->email}}</td>
+              <td>{{$manufacture->contact_name}}</td>
+              <td>{{$manufacture->mobile}}</td>
+              <td>{{$manufacture->website}}</td>
+              <td>
+                @isset($manufacture->icon)
+                  <img width='40' height='40' src="{{Storage::url('/')}}/{{$manufacture->icon}}"/>
+                @endisset
               </td>
-              <td>{{$size->is_public}}</td>
-              <td>{{$size->created_at}}</td>
-              <td>{{$size->updated_at}}</td>
+              <td>{{$manufacture->address}}</td>
+              <td>{{$manufacture->facebook}}</td>
+              <td>{{$manufacture->twitter}}</td>
+              <td>{{$manufacture->created_at}}</td>
+              <td>{{$manufacture->updated_at}}</td>
               <td>
                 <a class='delete_btn btn btn-danger btn-sm'
                 deleted='Course'
-                sendId='{{$size->id}}'
-                href="{{ aurl('/') }}/sizes/delete/{{$size->id}}">
+                sendId='{{$manufacture->id}}'
+                href="{{ aurl('/') }}/manufactures/delete/{{$manufacture->id}}">
                 <i class='fa fa-trash'></i></a>
               </td>
 
               <td>
-                <a class='size_edit btn btn-info btn-sm' href="/admin/sizes/{{$size->id}}/edit"><i class='fa fa-edit'></i></a>
+                <a class='manufacture_edit btn btn-info btn-sm' href="/admin/manufactures/{{$manufacture->id}}/edit"><i class='fa fa-edit'></i></a>
               </td>
             </tr>
           <?php } ?>
@@ -126,13 +138,29 @@
           <th></th>
           <th></th>
           <th>
-            <input class='tablefilter' type="text" id=sizename_search placeholder="{{trans('admin.name')}}" />
+            <input class='tablefilter' type="text" 
+            id=manufacturename_search 
+            placeholder="{{trans('admin.name')}}" />
           </th>
           <th>
             <input class='tablefilter' type="text" 
-            id=sizedepartment_search 
-            placeholder="{{trans('admin.name')}}" />
+            id=manufactureemail_search 
+            placeholder="{{trans('admin.email')}}" />
           </th>
+          <th>
+            <input class='tablefilter' type="text" 
+            id=manufacturecontact_name_search 
+            placeholder="{{trans('admin.contact_name')}}" />
+          </th>
+          <th>
+            <input class='tablefilter' type="text" 
+            id=manufacturephone_search 
+            placeholder="{{trans('admin.phone')}}" />
+          </th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
           <th></th>
           <th></th>
           <th></th>
@@ -160,18 +188,26 @@
     .search( 'Important' )
     .draw();
 
-    $('#sizename_search').on( 'keyup', function () {
+    $('#manufacturename_search').on( 'keyup', function () {
       table.columns(2)
         .search( this.value )
         .draw();
     });
-
-    $('#sizedepartment_search').on( 'keyup', function () {
+    $('#manufactureemail_search').on( 'keyup', function () {
       table.columns(3)
         .search( this.value )
         .draw();
     });
-
+    $('#manufacturecontact_name_search').on( 'keyup', function () {
+      table.columns(4)
+        .search( this.value )
+        .draw();
+    });
+    $('#manufacturephone_search').on( 'keyup', function () {
+      table.columns(5)
+        .search( this.value )
+        .draw();
+    });
 
   });
 </script>

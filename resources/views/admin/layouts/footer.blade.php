@@ -41,6 +41,7 @@
 
 <!-- AdminLTE for demo purposes -->
 <!-- <script src="{{ url('/design/Adminlte/jstree/js/demo.js') }}"></script> -->
+
 <script src="{{ url('/design/Adminlte/jstree/js/jstree.js') }}"></script>
 <script src="{{ url('/design/Adminlte/jstree/js/jstree.checkbox.js') }}"></script>
 <script src="{{ url('/design/Adminlte/jstree/js/jstree.wholerow.js') }}"></script>

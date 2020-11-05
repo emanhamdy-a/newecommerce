@@ -84,7 +84,7 @@
   <div class="box-body">
     {!! Form::open(['url'=>aurl('products'),'method'=>'put','files'=>true,'id'=>'product_form']) !!}
 
-    <a href="#" class="btn btn-primary save">{{ trans('admin.save') }}  <i class="fa fa-floppy-o"></i></a>
+    <a href="#" class="btn btn-primary save hidden">{{ trans('admin.save') }}  <i class="fa fa-floppy-o"></i></a>
     <a href="#" class="btn btn-success save_and_continue">{{ trans('admin.save_and_continue') }} <i class="fa fa-floppy-o"></i>
       <i class="fa fa-spin fa-spinner loading_save_c hidden"></i>
     </a>

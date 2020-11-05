@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
-use App\DataTables\SizesDatatable;
 use App\Http\Controllers\Controller;
 use App\Model\Size;
 use Illuminate\Http\Request;
@@ -14,9 +13,11 @@ class SizesController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-   public function index(SizesDatatable $trade)
+   public function index(Size $trade)
    {
-      return $trade->render('admin.sizes.index', ['title' => trans('admin.sizes')]);
+      $sizes=Size::orderBy('id','DESC')->get();
+      return view('admin.sizes.index',['title'=>trans('admin.size'),
+      'sizes'=>$sizes]);
    }
 
    /**
@@ -119,6 +120,13 @@ class SizesController extends Controller
    {
       $size = Size::find($id);
       $size->delete();
+      session()->flash('success', trans('admin.deleted_record'));
+      return redirect(aurl('sizes'));
+   }
+   public function delete($id)
+   {
+      $size = Size::find($id);
+      return $size->delete();
       session()->flash('success', trans('admin.deleted_record'));
       return redirect(aurl('sizes'));
    }

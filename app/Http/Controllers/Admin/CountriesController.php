@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
-use App\DataTables\CountryDatatable;
 use App\Http\Controllers\Controller;
 use App\Model\Country;
 use Illuminate\Http\Request;
@@ -14,9 +13,11 @@ class CountriesController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-   public function index(CountryDatatable $country)
+   public function index(Country $country)
    {
-      return $country->render('admin.countries.index', ['title' => trans('admin.countries')]);
+    $countries = Country::orderBy('id','DESC')->get();
+    return view('admin.countries.index', ['title' => trans('admin.countries'),
+    'countries' => $countries]);
    }
 
    /**
@@ -44,17 +45,19 @@ class CountriesController extends Controller
             'country_name_en' => 'required',
             'mob'             => 'required',
             'code'            => 'required',
-            'currency'        => 'required',
+            'currency_ar'     => 'required',
+            'currency_en'     => 'required',
             'logo'            => 'sometimes|nullable|' . v_image(),
          ], [], [
             'country_name_ar' => trans('admin.country_name_ar'),
             'country_name_en' => trans('admin.country_name_en'),
             'mob'             => trans('admin.mob'),
             'code'            => trans('admin.code'),
-            'currency'        => trans('admin.currency'),
+            'currency_ar'        => trans('admin.currency_ar'),
+            'currency_en'        => trans('admin.currency_en'),
             'logo'            => trans('admin.country_flag'),
          ]);
-
+            // dd($data);
       if (request()->hasFile('logo')) {
          $data['logo'] = up()->upload([
             'file'        => 'logo',
@@ -69,7 +72,7 @@ class CountriesController extends Controller
       return redirect(aurl('countries'));
    }
 
- 
+
    public function show($id)
    {
       //
@@ -91,14 +94,16 @@ class CountriesController extends Controller
             'country_name_en' => 'required',
             'mob'             => 'required',
             'code'            => 'required',
-            'currency'        => 'required',
+            'currency_ar'        => 'required',
+            'currency_en'        => 'required',
             'logo'            => 'sometimes|nullable|' . v_image(),
          ], [], [
             'country_name_ar' => trans('admin.country_name_ar'),
             'country_name_en' => trans('admin.country_name_en'),
             'mob'             => trans('admin.mob'),
             'code'            => trans('admin.code'),
-            'currency'        => trans('admin.currency'),
+            'currency_ar'        => trans('admin.currency_en'),
+            'currency_en'        => trans('admin.currency_en'),
             'logo'            => trans('admin.logo'),
          ]);
 
@@ -120,18 +125,32 @@ class CountriesController extends Controller
    public function destroy($id)
    {
       $countries = Country::find($id);
-      Storage::delete('public/' . $countries->logo);
+      if($countries->logo){
+        Storage::delete('public/' . $countries->logo);
+      }
       $countries->delete();
       session()->flash('success', trans('admin.deleted_record'));
       return redirect(aurl('countries'));
    }
+
+   public function delete($id) {
+    $countries = Country::find($id);
+    if($countries->logo){
+      Storage::delete('public/' . $countries->logo);
+    }
+    return $countries->delete();
+    session()->flash('success', trans('admin.deleted_record'));
+    return redirect(aurl('countries'));
+  }
 
    public function multi_delete()
    {
       if (is_array(request('item'))) {
          foreach (request('item') as $id) {
             $countries = Country::find($id);
-            Storage::delete('public/' . $countries->logo);
+            if($countries->logo){
+              Storage::delete('public/' . $countries->logo);
+            }
             $countries->delete();
          }
       } else {

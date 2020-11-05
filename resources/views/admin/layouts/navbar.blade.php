@@ -55,16 +55,16 @@
             </li>
           </ul>
         </li>
-        <li class="treeview {{ active_menu('admin')[0] }}">
+        <li class="treeview {{ active_menu('admins')[0] }}">
           <a href="#">
-            <i class="fa fa-users"></i> <span>{{ trans('admin.admin') }}</span>
+            <i class="fa fa-users"></i> <span>{{ trans('admin.admins') }}</span>
             <span class="pull-right-container">
 
             </span>
           </a>
-          <ul class="treeview-menu" style="{{ active_menu('admin')[1] }}">
-            <li class=""><a href="{{ aurl('admin') }}"><i class="fa fa-users"></i> {{ trans('admin.admin') }}</a></li>
-            <li class=""><a href="{{ aurl('admin/create') }}"><i class="fa fa-plus"></i> {{ trans('admin.add') }}</a></li>
+          <ul class="treeview-menu" style="{{ active_menu('admins')[1] }}">
+            <li class=""><a href="{{ aurl('admins') }}"><i class="fa fa-users"></i> {{ trans('admin.admins') }}</a></li>
+            <li class=""><a href="{{ aurl('admins/create') }}"><i class="fa fa-plus"></i> {{ trans('admin.add') }}</a></li>
           </ul>
         </li>
         <li class="treeview {{ active_menu('users')[0] }}">
@@ -95,29 +95,16 @@
           </ul>
         </li>
 
-        <li class="treeview {{ active_menu('cities')[0] }}">
+        <li class="treeview {{ active_menu('currencies')[0] }}">
           <a href="#">
-            <i class="fa fa-flag"></i> <span>{{ trans('admin.cities') }}</span>
+            <i class="fa fa-flag"></i> <span>{{ trans('admin.currencies') }}</span>
             <span class="pull-right-container">
 
             </span>
           </a>
-          <ul class="treeview-menu" style="{{ active_menu('cities')[1] }}">
-            <li class=""><a href="{{ aurl('cities') }}"><i class="fa fa-flag"></i> {{ trans('admin.cities') }}</a></li>
-            <li class=""><a href="{{ aurl('cities/create') }}"><i class="fa fa-plus"></i> {{ trans('admin.add') }}</a></li>
-          </ul>
-        </li>
-
-        <li class="treeview {{ active_menu('states')[0] }}">
-          <a href="#">
-            <i class="fa fa-flag"></i> <span>{{ trans('admin.states') }}</span>
-            <span class="pull-right-container">
-
-            </span>
-          </a>
-          <ul class="treeview-menu" style="{{ active_menu('states')[1] }}">
-            <li class=""><a href="{{ aurl('states') }}"><i class="fa fa-flag"></i> {{ trans('admin.states') }}</a></li>
-            <li class=""><a href="{{ aurl('states/create') }}"><i class="fa fa-plus"></i> {{ trans('admin.add') }}</a></li>
+          <ul class="treeview-menu" style="{{ active_menu('currencies')[1] }}">
+            <li class=""><a href="{{ aurl('currencies') }}"><i class="fa fa-flag"></i> {{ trans('admin.currencies') }}</a></li>
+            <li class=""><a href="{{ aurl('currencies/create') }}"><i class="fa fa-plus"></i> {{ trans('admin.add') }}</a></li>
           </ul>
         </li>
 
@@ -146,41 +133,29 @@
             <li class=""><a href="{{ aurl('trademarks/create') }}"><i class="fa fa-plus"></i> {{ trans('admin.add') }}</a></li>
           </ul>
         </li>
-        <li class="treeview {{ active_menu('manufacturers')[0] }}">
+        <li class="treeview {{ active_menu('manufactures')[0] }}">
           <a href="#">
-            <i class="fa fa-user"></i> <span>{{ trans('admin.manufacturers') }}</span>
+            <i class="fa fa-user"></i> <span>{{ trans('admin.manufactures') }}</span>
             <span class="pull-right-container">
 
             </span>
           </a>
-          <ul class="treeview-menu" style="{{ active_menu('manufacturers')[1] }}">
-            <li class=""><a href="{{ aurl('manufacturers') }}"><i class="fa fa-user"></i> {{ trans('admin.manufacturers') }}</a></li>
-            <li class=""><a href="{{ aurl('manufacturers/create') }}"><i class="fa fa-plus"></i> {{ trans('admin.add') }}</a></li>
-          </ul>
-        </li>
-        <li class="treeview {{ active_menu('shipping')[0] }}">
-          <a href="#">
-            <i class="fa fa-truck"></i> <span>{{ trans('admin.shipping') }}</span>
-            <span class="pull-right-container">
-
-            </span>
-          </a>
-          <ul class="treeview-menu" style="{{ active_menu('shipping')[1] }}">
-            <li class=""><a href="{{ aurl('shipping') }}"><i class="fa fa-truck"></i> {{ trans('admin.shipping') }}</a></li>
-            <li class=""><a href="{{ aurl('shipping/create') }}"><i class="fa fa-plus"></i> {{ trans('admin.add') }}</a></li>
+          <ul class="treeview-menu" style="{{ active_menu('manufactures')[1] }}">
+            <li class=""><a href="{{ aurl('manufactures') }}"><i class="fa fa-user"></i> {{ trans('admin.manufactures') }}</a></li>
+            <li class=""><a href="{{ aurl('manufactures/create') }}"><i class="fa fa-plus"></i> {{ trans('admin.add') }}</a></li>
           </ul>
         </li>
 
-        <li class="treeview {{ active_menu('malls')[0] }}">
+        <li class="treeview {{ active_menu('merchants')[0] }}">
           <a href="#">
-            <i class="fa fa-building"></i> <span>{{ trans('admin.malls') }}</span>
+            <i class="fa fa-building"></i> <span>{{ trans('admin.merchants') }}</span>
             <span class="pull-right-container">
 
             </span>
           </a>
-          <ul class="treeview-menu" style="{{ active_menu('malls')[1] }}">
-            <li class=""><a href="{{ aurl('malls') }}"><i class="fa fa-building"></i> {{ trans('admin.malls') }}</a></li>
-            <li class=""><a href="{{ aurl('malls/create') }}"><i class="fa fa-plus"></i> {{ trans('admin.add') }}</a></li>
+          <ul class="treeview-menu" style="{{ active_menu('merchants')[1] }}">
+            <li class=""><a href="{{ aurl('merchants') }}"><i class="fa fa-building"></i> {{ trans('admin.merchants') }}</a></li>
+            <li class=""><a href="{{ aurl('merchants/create') }}"><i class="fa fa-plus"></i> {{ trans('admin.add') }}</a></li>
           </ul>
         </li>
         <!--  -->

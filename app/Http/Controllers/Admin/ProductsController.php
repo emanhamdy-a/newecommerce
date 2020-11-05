@@ -1,10 +1,8 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
-use App\DataTables\ProductsDatatable;
 use App\File as FileTbl;
 use App\Http\Controllers\Controller;
-use App\Model\MallProduct;
 use App\Model\OtherData;
 use App\Model\Product;
 use App\Model\RelatedProudct;
@@ -12,11 +10,17 @@ use App\Model\Size;
 use App\Model\Weight;
 use Illuminate\Http\Request;
 use Storage;
-
+use Illuminate\Support\Str;
+use App\Http\Resources\ProductCollection;
+use App\Http\Resources\Product as ProductResource;
 class ProductsController extends Controller {
 
-	public function index(ProductsDatatable $product) {
-		return $product->render('admin.products.index', ['title' => trans('admin.products')]);
+  public function index(Product $product) {
+    $products=Product::orderBy('id','DESC')->get();
+    // $products=new ProductResource($productss);
+      // $products=new ProductCollection($productss);
+		return view('admin.products.index',['title'=>trans('admin.products'),
+		'products'=>$products]);
 	}
 
 	public function prepare_weight_size() {
@@ -101,37 +105,6 @@ class ProductsController extends Controller {
 		return response(['status' => true], 200);
 	}
 
-	// public function store() {
-
-	 // 	$data = $this->validate(request(),
-    // 		[
-    // 			'country_name_ar' => 'required',
-    // 			'country_name_en' => 'required',
-    // 			'mob'             => 'required',
-    // 			'code'            => 'required',
-    // 			'logo'            => 'sometimes|nullable|'.v_image(),
-    // 		], [], [
-    // 			'country_name_ar' => trans('admin.country_name_ar'),
-    // 			'country_name_en' => trans('admin.country_name_en'),
-    // 			'mob'             => trans('admin.mob'),
-    // 			'code'            => trans('admin.code'),
-    // 			'logo'            => trans('admin.country_flag'),
-    // 		]);
-
-    // 	if (request()->hasFile('logo')) {
-    // 		$data['logo'] = up()->upload([
-    // 				'file'        => 'logo',
-    // 				'path'        => 'products',
-    // 				'upload_type' => 'single',
-    // 				'delete_file' => '',
-    // 			]);
-    // 	}
-
-    // 	Country::create($data);
-    // 	session()->flash('success', trans('admin.record_added'));
-    // 	return redirect(aurl('products'));
-  // }
-
 	public function show($id) {
 		//
 	}
@@ -209,15 +182,6 @@ class ProductsController extends Controller {
 				'reason'         => trans('admin.reason'),
 			]);
 
-		if (request()->has('mall')) {
-			MallProduct::where('product_id', $id)->delete();
-			foreach (request('mall') as $mall) {
-				MallProduct::create([
-					'product_id' => $id,
-					'mall_id'    => $mall,
-				]);
-			}
-		}
 
 		if (request()->has('related')) {
 			RelatedProudct::where('product_id', $id)->delete();
@@ -258,47 +222,46 @@ class ProductsController extends Controller {
 			$create = Product::create($copy);
 			if (!empty($copy['photo'])) {
 				$ext      = \File::extension($copy['photo']);
-				$new_path = 'products/'.$create->id.'/'.str_random(30).'.'.$ext;
-				\Storage::copy($copy['photo'], $new_path);
+        $new_path = 'products/'.$create->id.'/'.Str::random(30).'.'.$ext;
+        
+				\Storage::copy('public/' . $copy['photo'], 'public/'.$new_path);
 				$create->photo = $new_path;
-				$create->save();
+        $create->save();
 			}
+      // return $new_path;
 
 			// Mall Product //
-			foreach ($releation_data->mall_product()->get() as $mall) {
-				MallProduct::create([
-						'product_id' => $create->id,
-						'mall_id'    => $mall->mall_id,
-					]);
-			}
-			// Mall Product //
 
+      // Other Data k=>v Product //
+      if($releation_data->other_data()){
+        foreach ($releation_data->other_data()->get() as $otherdata) {
+          OtherData::create([
+              'product_id' => $create->id,
+              'data_key'   => $otherdata->data_key,
+              'data_value' => $otherdata->data_value,
+            ]);
+        }
+      }
 			// Other Data k=>v Product //
-			foreach ($releation_data->other_data()->get() as $otherdata) {
-				OtherData::create([
-						'product_id' => $create->id,
-						'data_key'   => $otherdata->data_key,
-						'data_value' => $otherdata->data_value,
-					]);
-			}
-			// Other Data k=>v Product //
-
-			foreach ($releation_data->files()->get() as $file) {
-				$hashname = str_random(30);
-				$ext      = \File::extension($file->full_file);
-				$new_path = 'products/'.$create->id.'/'.$hashname.'.'.$ext;
-				\Storage::copy($file->full_file, $new_path);
-				$add = FileTbl::create([
-						'name'        => $file->name,
-						'size'        => $file->size,
-						'file'        => $hashname,
-						'path'        => 'products/'.$create->id,
-						'full_file'   => 'products/'.$create->id.'/'.$hashname.'.'.$ext,
-						'mime_type'   => $file->mime_type,
-						'file_type'   => 'product',
-						'relation_id' => $create->id,
-					]);
-			}
+      if($releation_data->files()){
+        foreach ($releation_data->files()->get() as $file) {
+          $hashname = Str::random(30);
+          $ext      = \File::extension('public/' . $file->full_file);
+          $new_path = 'products/'.$create->id.'/'.$hashname.'.'.$ext;
+          \Storage::copy('public/' . $file->full_file,'public/'. $new_path);
+          // return('public/' . $file->full_file);
+          $add = FileTbl::create([
+              'name'        => $file->name,
+              'size'        => $file->size,
+              'file'        => $hashname,
+              'path'        => 'products/'.$create->id,
+              'full_file'   => 'products/'.$create->id.'/'.$hashname.'.'.$ext,
+              'mime_type'   => $file->mime_type,
+              'file_type'   => 'product',
+              'relation_id' => $create->id,
+            ]);
+        }
+      }
 
 			return response([
 					'status'  => true,
@@ -314,11 +277,17 @@ class ProductsController extends Controller {
 		$products = Product::find($id);
 		!empty($products->photo)?Storage::delete('public/' . $products->photo):'';
 		up()->delete_files($id);
-		$products->delete();
+		return $products->delete();
 	}
 	public function destroy($id) {
 		//return $id;
 		$this->deleteProduct($id);
+		session()->flash('success', trans('admin.deleted_record'));
+		return redirect(aurl('products'));
+	}
+	public function delete($id) {
+		//return $id;
+		return $this->deleteProduct($id);
 		session()->flash('success', trans('admin.deleted_record'));
 		return redirect(aurl('products'));
 	}

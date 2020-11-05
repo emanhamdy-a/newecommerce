@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
-use App\DataTables\WeightsDatatable;
 use App\Http\Controllers\Controller;
 use App\Model\Weight;
 use Illuminate\Http\Request;
@@ -14,9 +13,11 @@ class WeightsController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-   public function index(WeightsDatatable $trade)
+   public function index(Weight $trade)
    {
-      return $trade->render('admin.weights.index', ['title' => trans('admin.weights')]);
+      $weights=Weight::orderBy('id','DESC')->get();
+      return view('admin.weights.index',['title'=>trans('admin.weights'),
+      'weights'=>$weights]);
    }
 
    /**
@@ -88,6 +89,14 @@ class WeightsController extends Controller
    {
       $weights = Weight::find($id);
       $weights->delete();
+      session()->flash('success', trans('admin.deleted_record'));
+      return redirect(aurl('weights'));
+   }
+
+   public function delete($id)
+   {
+      $weights = Weight::find($id);
+      return $weights->delete();
       session()->flash('success', trans('admin.deleted_record'));
       return redirect(aurl('weights'));
    }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class AdminController extends Controller {
 
 	public function index(Admin $admin) {
-    $admins = Admin::all();
+    $admins = Admin::orderBy('id','DESC')->get();
     return view('admin.admins.index', ['title' => trans('admin.admins'),
     'admins' => $admins]);
 	}
@@ -31,25 +31,8 @@ class AdminController extends Controller {
 		$data['password'] = bcrypt(request('password'));
 		Admin::create($data);
 		session()->flash('success', trans('admin.record_added'));
-		return redirect(aurl('admin'));
+		return redirect(aurl('admins'));
 	}
-	// public function store(Request $request) {
-	// 	$data =\Validator::make($request->all(),
-  //   [
-	// 			'name'     => 'required',
-	// 			'email'    => 'required|email|unique:admins',
-	// 			'password' => 'required|min:6'
-	// 		], [], [
-  //       'name'     => trans('admin.name'),
-	// 			'email'    => trans('admin.email'),
-	// 			'password' => trans('admin.password'),
-  //       ]);
-  //   dd($data->errors());
-	// 	$data['password'] = bcrypt(request('password'));
-	// 	Admin::create($data);
-	// 	session()->flash('success', trans('admin.record_added'));
-	// 	return redirect(aurl('admin'));
-	// }
 
 	/**
 	 * Display the specified resource.
@@ -90,15 +73,19 @@ class AdminController extends Controller {
 		}
 		Admin::where('id', $id)->update($data);
 		session()->flash('success', trans('admin.updated_record'));
-		return redirect(aurl('admin'));
+		return redirect(aurl('admins'));
   }
 
 	public function destroy($id) {
 		Admin::find($id)->delete();
 		session()->flash('success', trans('admin.deleted_record'));
-		return redirect(aurl('admin'));
+		return redirect(aurl('admins'));
 	}
-
+  public function delete($id) {
+    return Admin::find($id)->delete();
+    session()->flash('success', trans('admin.deleted_record'));
+    return redirect(aurl('users'));
+  }
 	public function multi_delete() {
     // dd(request('item'));
 		if (is_array(request('item'))) {
@@ -107,6 +94,6 @@ class AdminController extends Controller {
 			Admin::find(request('item'))->delete();
 		}
 		session()->flash('success', trans('admin.deleted_record'));
-		return redirect(aurl('admin'));
+		return redirect(aurl('admins'));
 	}
 }

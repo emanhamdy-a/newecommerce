@@ -226,3 +226,17 @@ if (!function_exists('check_mall')) {
 		return \App\Model\MallProduct::where('product_id', $pid)->where('mall_id', $id)->count() > 0?true:false;
 	}
 }
+if (!function_exists('relation_id')) {
+  function relation_id($table,$id,$column=null,$lang=null)
+  {
+    if($column){
+      return DB::table($table)
+      ->where('id',$id)
+      ->first();
+    }else{
+      return DB::table($table)
+      ->where('id',$id)
+      ->value('country_name_ar');
+    }
+  }
+}

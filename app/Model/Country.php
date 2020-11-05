@@ -12,7 +12,8 @@ class Country extends Model {
 		'mob',
 		'code',
 		'logo',
-		'currency',
+		'currency_ar',
+		'currency_en',
   ];
 
   public function malls() {

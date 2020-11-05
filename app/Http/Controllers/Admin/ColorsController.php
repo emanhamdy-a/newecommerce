@@ -1,7 +1,5 @@
 <?php
 namespace App\Http\Controllers\Admin;
-
-use App\DataTables\ColorsDatatable;
 use App\Http\Controllers\Controller;
 use App\Model\Color;
 use Illuminate\Http\Request;
@@ -14,9 +12,11 @@ class ColorsController extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-   public function index(ColorsDatatable $trade)
+   public function index(Color $trade)
    {
-      return $trade->render('admin.colors.index', ['title' => trans('admin.colors')]);
+      $colors=Color::orderBy('id','DESC')->get();
+      return view('admin.colors.index',['title'=>trans('admin.color'),
+      'colors'=>$colors]);
    }
 
    /**
@@ -115,6 +115,13 @@ class ColorsController extends Controller
    {
       $colors = Color::find($id);
       $colors->delete();
+      session()->flash('success', trans('admin.deleted_record'));
+      return redirect(aurl('colors'));
+   }
+   public function delete($id)
+   {
+      $colors = Color::find($id);
+      return $colors->delete();
       session()->flash('success', trans('admin.deleted_record'));
       return redirect(aurl('colors'));
    }

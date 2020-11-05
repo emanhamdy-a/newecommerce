@@ -22,7 +22,7 @@
     <table class='filter'>
       <tr>
         <td>
-          <a class='size_create btn btn-info' href="/admin/sizes/create">+ {{trans('admin.add')}}</i></a>
+          <a class='currency_create btn btn-info' href="/admin/currencies/create">+ {{trans('admin.add')}}</i></a>
         </td>
         <td>
           <a class="btn btn-danger delBtn m-y" tabindex="0"><span><i class="fa fa-trash"></i></span></a>
@@ -36,7 +36,7 @@
       </tr>
     </table>
       <br>
-    {!! Form::open(['id'=>'form_data','url'=>aurl('sizes/destroy/all'),'method'=>'delete']) !!}
+    {!! Form::open(['id'=>'form_data','url'=>aurl('currencies/destroy/all'),'method'=>'delete']) !!}
       <table id="datatable" style='width:100% !important;'
         class="display responsive nowrap">
         <thead>
@@ -47,8 +47,7 @@
                 </th>
                 <th>id</th>
                 <th>{{trans('admin.name')}}</th>
-                <th>{{trans('admin.department')}}</th>
-                <th>{{trans('admin.public')}}</th>
+                <th>{{trans('admin.acode')}}</th>
                 <th>{{trans('admin.created_at')}}</th>
                 <th>{{trans('admin.updated_at')}}</th>
                 <th>{{trans('admin.delete')}}</th>
@@ -58,32 +57,28 @@
 
 
         <tbody>
-          <?php foreach ($sizes as $size) { ?>
-            <tr class='container{{ $size->id }}'>
-              <td> <input type="checkbox" name="item[]"
-               class="item_checkbox" value="{{ $size->id }}"> </td>
-              <td>{{$size->id}}</td>
+          <?php foreach ($currencies as $currency) { ?>
+            <tr class='container{{ $currency->id }}'>
+              <td> <input type="checkbox" name="item[]" class="item_checkbox" value="{{ $currency->id }}"> </td>
+              <td>{{$currency->id}}</td>
               <td>
                 <?php //if(lang()=='ar'){ ?>
-                  {{lang()=='ar' ? $size->name_ar : $size->name_en}}
+                  {{lang()=='ar' ? $currency->currency_name_ar : $currency->currency_name_en}}
                 <?php //} ?>
               </td>
-              <td> 
-                {{lang()=='ar' ? $size->department_id()->first()->dep_name_ar : $size->department_id()->first()->dep_name_en}}
-              </td>
-              <td>{{$size->is_public}}</td>
-              <td>{{$size->created_at}}</td>
-              <td>{{$size->updated_at}}</td>
+              <td>{{$currency->currency_code}}</td>
+              <td>{{$currency->created_at}}</td>
+              <td>{{$currency->updated_at}}</td>
               <td>
                 <a class='delete_btn btn btn-danger btn-sm'
                 deleted='Course'
-                sendId='{{$size->id}}'
-                href="{{ aurl('/') }}/sizes/delete/{{$size->id}}">
+                sendId='{{$currency->id}}'
+                href="{{ aurl('/') }}/currencies/delete/{{$currency->id}}">
                 <i class='fa fa-trash'></i></a>
               </td>
 
               <td>
-                <a class='size_edit btn btn-info btn-sm' href="/admin/sizes/{{$size->id}}/edit"><i class='fa fa-edit'></i></a>
+                <a class='currency_edit btn btn-info btn-sm' href="/admin/currencies/{{$currency->id}}/edit"><i class='fa fa-edit'></i></a>
               </td>
             </tr>
           <?php } ?>
@@ -126,12 +121,7 @@
           <th></th>
           <th></th>
           <th>
-            <input class='tablefilter' type="text" id=sizename_search placeholder="{{trans('admin.name')}}" />
-          </th>
-          <th>
-            <input class='tablefilter' type="text" 
-            id=sizedepartment_search 
-            placeholder="{{trans('admin.name')}}" />
+            <input class='tablefilter' type="text" id=currencyname_search placeholder="{{trans('admin.name')}}" />
           </th>
           <th></th>
           <th></th>
@@ -160,14 +150,8 @@
     .search( 'Important' )
     .draw();
 
-    $('#sizename_search').on( 'keyup', function () {
+    $('#currencyname_search').on( 'keyup', function () {
       table.columns(2)
-        .search( this.value )
-        .draw();
-    });
-
-    $('#sizedepartment_search').on( 'keyup', function () {
-      table.columns(3)
         .search( this.value )
         .draw();
     });

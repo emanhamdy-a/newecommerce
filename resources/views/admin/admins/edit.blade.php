@@ -8,7 +8,7 @@
   </div>
   <!-- /.box-header -->
   <div class="box-body">
-    {!! Form::open(['url'=>aurl('admin/'.$admin->id),'method'=>'put' ]) !!}
+    {!! Form::open(['url'=>aurl('admins/'.$admin->id),'method'=>'put' ]) !!}
      <div class="form-group">
         {!! Form::label('name',trans('admin.name')) !!}
         {!! Form::text('name',$admin->name,['class'=>'form-control']) !!}
