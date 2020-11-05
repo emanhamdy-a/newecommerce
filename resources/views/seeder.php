@@ -13,7 +13,7 @@ DB::table('users')->insert(    [
     ["id" => "24","name" => "Mr. Saige Pacocha I","email" => "myriam.emmerich@example.org","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"level" => "company","remember_token" => "PkSHwRGJwV","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
    
 ]);
-DB::statement("ALTER SEQUENCE users_id_seq RESTART WITH 35");
+DB::statement("ALTER SEQUENCE users_id_seq RESTART WITH 25");
 //settings
 DB::table('settings')->insert(    [
     ["id" => "1","sitename_ar" => "goodfood","sitename_en" => "goodfood","logo" => "","icon" => "","email" => "eman@example.com","main_lang" => "ar","description" => "موقع لعرض المنتجات","keywords" => "معارض, اجهزه , معدات","status" => "open","message_maintenance" => "الموقع في حاله صيانه","created_at" => "2020-10-31 13:24:33","updated_at" => "2020-10-31 13:24:33",],
