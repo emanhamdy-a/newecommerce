@@ -1,56 +1,5 @@
 <?php
 
-//users
-DB::table('users')->insert(    [
-    ["id" => "1","name" => "Edythe Mante Sr.","email" => "harley19@example.net","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"level" => "company","remember_token" => "de0vUi3NrL","created_at" => "2020-10-30 18:03:19","updated_at" => "2020-10-30 18:03:19",],
-    ["id" => "4","name" => "Horacio Christiansen Sr.","email" => "deonte.shields@example.org","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"level" => "user","remember_token" => "fboZVOfNbt","created_at" => "2020-10-30 18:03:19","updated_at" => "2020-10-30 18:03:19",],
-    ["id" => "16","name" => "Myrl Weimann","email" => "weber.ola@example.org","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"level" => "vendor","remember_token" => "FZ5DK6DPQb","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
-    ["id" => "18","name" => "Consuelo Nikolaus","email" => "hill.violet@example.com","password" => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm',"level" => "user","remember_token" => "gy4TMBFmEm","created_at" => "2020-10-30 18:03:20","updated_at" => "2020-10-30 18:03:20",],
-   
-]);
-DB::statement("ALTER SEQUENCE users_id_seq RESTART WITH 18");
-//admins
-DB::table('admins')->insert(    [
-    ["id" => "1","name" => "Eman Hamdy","email" => "eman@example.com","password" => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi","remember_token" => "VI4zhr8jgi","created_at" => "2020-10-30 18:03:19","updated_at" => "2020-10-30 18:03:19",],
-]);
-DB::statement("ALTER SEQUENCE admins_id_seq RESTART WITH 4");
-//settings
-DB::table('settings')->insert(    [
-    ["id" => "1","sitename_ar" => "goodfood","sitename_en" => "goodfood","logo" => "","icon" => "","email" => "eman@example.com","main_lang" => "ar","description" => "موقع لعرض المنتجات","keywords" => "معارض, اجهزه , معدات","status" => "open","message_maintenance" => "الموقع في حاله صيانه","created_at" => "2020-10-30 18:03:19","updated_at" => "2020-10-30 18:03:19",],
-]);
-DB::statement("ALTER SEQUENCE settings_id_seq RESTART WITH 3");
-//files
-DB::table('files')->insert(    [
-    ["id" => "1","name" => "Lighthouse.jpg","size" => "561276","file" => "8djE6KEWXwY3rLphyZ4HFgbIKX2d55W6hhJj8WkH.jpeg","path" => "products/7","full_file" => "products/7/8djE6KEWXwY3rLphyZ4HFgbIKX2d55W6hhJj8WkH.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "7","created_at" => "2020-11-04 20:17:32","updated_at" => "2020-11-04 20:17:32",],
-    ["id" => "2","name" => "Koala.jpg","size" => "780831","file" => "JkyB4vVwTl0WXF66C0yp1qvLq2ok0iJRAQaRX1dk.jpeg","path" => "products/7","full_file" => "products/7/JkyB4vVwTl0WXF66C0yp1qvLq2ok0iJRAQaRX1dk.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "7","created_at" => "2020-11-04 20:17:39","updated_at" => "2020-11-04 20:17:39",],
-    ["id" => "3","name" => "Chrysanthemum.jpg","size" => "879394","file" => "IYN9w6MAf3UDCygCw9Kfa8iVCdZg7d8ilwgZBMn2.jpeg","path" => "products/7","full_file" => "products/7/IYN9w6MAf3UDCygCw9Kfa8iVCdZg7d8ilwgZBMn2.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "7","created_at" => "2020-11-04 20:17:39","updated_at" => "2020-11-04 20:17:39",],
-    ["id" => "4","name" => "Lighthouse.jpg","size" => "561276","file" => "qtGBKDRMSObMJRTW2ary0DlH8kaVd3zyRGx4azBT.jpeg","path" => "products/8","full_file" => "products/8/qtGBKDRMSObMJRTW2ary0DlH8kaVd3zyRGx4azBT.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "8","created_at" => "2020-11-05 05:48:40","updated_at" => "2020-11-05 05:48:40",],
-    ["id" => "5","name" => "Penguins.jpg","size" => "777835","file" => "LvR2DnQuuI2gmX3HxjqqsEQUnpx9397r6SLtPwCP.jpeg","path" => "products/8","full_file" => "products/8/LvR2DnQuuI2gmX3HxjqqsEQUnpx9397r6SLtPwCP.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "8","created_at" => "2020-11-05 05:48:40","updated_at" => "2020-11-05 05:48:40",],
-    ["id" => "6","name" => "Penguins.jpg","size" => "777835","file" => "evgyaHZQwtbyaB5mk6W1pYev0aSg2FNW5w9taz2c.jpeg","path" => "products/9","full_file" => "products/9/evgyaHZQwtbyaB5mk6W1pYev0aSg2FNW5w9taz2c.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "9","created_at" => "2020-11-05 09:03:35","updated_at" => "2020-11-05 09:03:35",],
-    ["id" => "7","name" => "Tulips.jpg","size" => "620888","file" => "CtMokkZWFlHfPa0PtR537tmDpuMDfSjXtQiW9tAi.jpeg","path" => "products/9","full_file" => "products/9/CtMokkZWFlHfPa0PtR537tmDpuMDfSjXtQiW9tAi.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "9","created_at" => "2020-11-05 09:03:36","updated_at" => "2020-11-05 09:03:36",],
-    ["id" => "28","name" => "Penguins.jpg","size" => "777835","file" => "fB6VeDN9QME8mJpa8BIWZiVr8rSki4BFZPmjrb9e.jpeg","path" => "products/70","full_file" => "products/70/fB6VeDN9QME8mJpa8BIWZiVr8rSki4BFZPmjrb9e.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "70","created_at" => "2020-11-05 14:54:43","updated_at" => "2020-11-05 14:54:43",],
-    ["id" => "29","name" => "Tulips.jpg","size" => "620888","file" => "rHJnm3JV5ilVaCqOXbC22WrmcdQfm2e8e63ehdZN.jpeg","path" => "products/70","full_file" => "products/70/rHJnm3JV5ilVaCqOXbC22WrmcdQfm2e8e63ehdZN.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "70","created_at" => "2020-11-05 14:59:46","updated_at" => "2020-11-05 14:59:46",],
-    ["id" => "30","name" => "Chrysanthemum.jpg","size" => "879394","file" => "4alGtp4tLKARxYbhfVNFQ6Kr1bWSekMxt2IJlHaa.jpeg","path" => "products/70","full_file" => "products/70/4alGtp4tLKARxYbhfVNFQ6Kr1bWSekMxt2IJlHaa.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "70","created_at" => "2020-11-05 15:01:31","updated_at" => "2020-11-05 15:01:31",],
-    ["id" => "37","name" => "Penguins.jpg","size" => "777835","file" => "D0UJxfufxVbKOeTa64PWOUPdeKTJrx","path" => "products/73","full_file" => "products/73/D0UJxfufxVbKOeTa64PWOUPdeKTJrx.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "73","created_at" => "2020-11-05 15:03:17","updated_at" => "2020-11-05 15:03:17",],
-    ["id" => "38","name" => "Tulips.jpg","size" => "620888","file" => "8AB2KOObjA58dT6OYDPalAyrRCCHgZ","path" => "products/73","full_file" => "products/73/8AB2KOObjA58dT6OYDPalAyrRCCHgZ.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "73","created_at" => "2020-11-05 15:03:17","updated_at" => "2020-11-05 15:03:17",],
-    ["id" => "39","name" => "Penguins.jpg","size" => "777835","file" => "rhoV2LODQ89EF9lFEKlSeJNZN9ujPk","path" => "products/76","full_file" => "products/76/rhoV2LODQ89EF9lFEKlSeJNZN9ujPk.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "76","created_at" => "2020-11-05 15:23:29","updated_at" => "2020-11-05 15:23:29",],
-    ["id" => "40","name" => "Tulips.jpg","size" => "620888","file" => "NRQVIDRqgegNO4K0mPOykIXM6jq7i7","path" => "products/76","full_file" => "products/76/NRQVIDRqgegNO4K0mPOykIXM6jq7i7.jpeg","mime_type" => "image/jpeg","file_type" => "product","relation_id" => "76","created_at" => "2020-11-05 15:23:29","updated_at" => "2020-11-05 15:23:29",],
-]);
-DB::statement("ALTER SEQUENCE files_id_seq RESTART WITH 41");
-//countries
-DB::table('countries')->insert(    [
-    ["id" => "2","country_name_ar" => "فرنسا","country_name_en" => "france","mob" => "76786","code" => "fr","currency_ar" => "يورو","currency_en" => "euro","logo" => "countries/FO9TXir0o9yKtplAda2iYqlM2OIOHZJXF1SFE0Eq.jpeg","created_at" => "2020-11-03 20:16:33","updated_at" => "2020-11-03 20:37:44",],
-    ["id" => "8","country_name_ar" => "مصر","country_name_en" => "egypt","mob" => "1234","code" => "eg","currency_ar" => "جنيه مصري","currency_en" => "egyption pound","logo" => "countries/TSoJEMTdcvRVn90AOOXUXWczOrjzHQlP0eGkX50s.jpeg","created_at" => "2020-11-03 15:06:31","updated_at" => "2020-11-03 20:39:27",],
-]);
-DB::statement("ALTER SEQUENCE countries_id_seq RESTART WITH 9");
-//departments
-DB::table('departments')->insert(    [
-    ["id" => "2","dep_name_ar" => "كمبيوتر","dep_name_en" => "computer","icon" => "","description" => "","keyword" => "","parent" => "5","created_at" => "2020-11-03 23:20:07","updated_at" => "2020-11-03 23:24:21",],
-    ["id" => "3","dep_name_ar" => "كمبيوتر شخصي","dep_name_en" => "laptop","icon" => "","description" => "","keyword" => "","parent" => "2","created_at" => "2020-11-03 23:20:42","updated_at" => "2020-11-03 23:25:12",],
-    ["id" => "5","dep_name_ar" => "اجهزه","dep_name_en" => "Devices","icon" => "","description" => "","keyword" => "","parent" => "","created_at" => "2020-11-03 23:23:56","updated_at" => "2020-11-03 23:23:56",],
-    ["id" => "6","dep_name_ar" => "سيارات","dep_name_en" => "cars","icon" => "","description" => "","keyword" => "","parent" => "2","created_at" => "2020-11-03 23:18:20","updated_at" => "2020-11-03 23:18:20",],
-]);
-DB::statement("ALTER SEQUENCE departments_id_seq RESTART WITH 6");
 //trade_marks
 DB::table('trade_marks')->insert(    [
     ["id" => "2","name_ar" => "اتش","name_en" => "hp","logo" => "trademarks/wQFBmTQj2I4Sqq0uKdUh1avsZaAqtNsZkW68Q1wS.jpeg","created_at" => "2020-11-04 00:06:04","updated_at" => "2020-11-04 00:17:44",],
