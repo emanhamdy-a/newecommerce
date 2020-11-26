@@ -137,3 +137,9 @@ function push_functions() {
    }
   });
 }
+// $("document").ready(function(){
+  $('.content-wrapper').on('click',function(){
+    e.preventDefault();
+  });
+// })
+

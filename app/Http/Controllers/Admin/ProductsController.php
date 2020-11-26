@@ -139,8 +139,10 @@ class ProductsController extends Controller {
 	public function update($id) {
 		$data = $this->validate(request(),
 			[
-				'title'          => 'required',
-				'content'        => 'required',
+				'title_ar'          => 'required',
+				'title_en'          => 'required',
+				'content_ar'        => 'required',
+				'content_en'        => 'required',
 				'department_id'  => 'required|numeric',
 				'trade_id'       => 'required|numeric',
 				'manu_id'        => 'required|numeric',
@@ -160,8 +162,10 @@ class ProductsController extends Controller {
 				'status'         => 'sometimes|nullable|in:pending,refused,active',
 				'reason'         => 'sometimes|nullable|numeric',
 			], [], [
-				'title'          => trans('admin.title'),
-				'content'        => trans('admin.content'),
+				'title_ar'       => trans('admin.product_title_ar'),
+				'title_en'       => trans('admin.product_title_en'),
+				'content_ar'     => trans('admin.product_content_ar'),
+				'content_en'     => trans('admin.product_content_en'),
 				'department_id'  => trans('admin.department_id'),
 				'trade_id'       => trans('admin.trade_id'),
 				'manu_id'        => trans('admin.manu_id'),
@@ -181,8 +185,7 @@ class ProductsController extends Controller {
 				'status'         => trans('admin.status'),
 				'reason'         => trans('admin.reason'),
 			]);
-
-
+     		// return response(['status' => true, 'message' => $data], 200);
 		if (request()->has('related')) {
 			RelatedProudct::where('product_id', $id)->delete();
 			foreach (request('related') as $related) {
@@ -223,7 +226,7 @@ class ProductsController extends Controller {
 			if (!empty($copy['photo'])) {
 				$ext      = \File::extension($copy['photo']);
         $new_path = 'products/'.$create->id.'/'.Str::random(30).'.'.$ext;
-        
+
 				\Storage::copy('public/' . $copy['photo'], 'public/'.$new_path);
 				$create->photo = $new_path;
         $create->save();

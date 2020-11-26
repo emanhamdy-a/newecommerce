@@ -44,7 +44,6 @@
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{ url('/') }}/design/Adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css">
 
-  <script src="{{ url('/design/Adminlte/dist/js/myfunctions.js') }}"></script>
 
 
 

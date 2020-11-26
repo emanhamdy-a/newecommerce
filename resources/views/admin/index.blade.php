@@ -26,3 +26,4 @@
     <!-- /.content -->
   </div>
 @include('admin.layouts.footer')
+

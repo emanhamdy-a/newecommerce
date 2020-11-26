@@ -16,6 +16,7 @@
 
 <script src="{{ url('/design/Adminlte/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
 
+<script src="{{ url('/design/Adminlte/dist/js/myfunctions.js') }}"></script>
 
 
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

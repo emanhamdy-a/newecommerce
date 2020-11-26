@@ -10,15 +10,19 @@ class Product extends Model {
 
 	protected $table    = 'products';
 	protected $fillable = [
-		'title',
+		'title_ar',
+		'title_en',
 		'photo',
-		'content',
+		'content_ar',
+		'content_en',
 		'department_id',
 		'trade_id',
-		'manu_id',
+    'manu_id',
+    'country_id',
 		'color_id',
 		'size_id',
 		'currency_id',
+		'merchant_id',
 		'price',
 		'stock',
 		'start_at',
@@ -68,22 +72,22 @@ class Product extends Model {
     }
   }
 
-  // public function country_id($all=null)
-  // {
-  //   if($all!== null){
-  //     return $this->hasOne(Country::class, 'id', 'country_id')
-  //     ;
-  //   }
-  //   if(lang()=='ar'){
-  //     return $this->hasOne(Country::class, 'id', 'country_id')
+  public function country_id($all=null)
+  {
+    if($all!== null){
+      return $this->hasOne(Country::class, 'id', 'country_id')
+      ;
+    }
+    if(lang()=='ar'){
+      return $this->hasOne(Country::class, 'id', 'country_id')
 
-  //     ->value('country_name_ar');
-  //   }else{
-  //     return $this->hasOne(Country::class, 'id', 'country_id')
+      ->value('country_name_ar');
+    }else{
+      return $this->hasOne(Country::class, 'id', 'country_id')
 
-  //     ->value('country_name_en');
-  //   }
-  // }
+      ->value('country_name_en');
+    }
+  }
 
   public function department_id($all=null) {
     if($all!== null){
@@ -150,12 +154,16 @@ class Product extends Model {
       return $this->hasOne('App\Model\Currency','id','currency_id')->value('currency_name_en');
     }
   }
-  // public function mall_product() {
-  // 	return $this->hasMany(\App\Model\MallProduct::class , 'product_id', 'id');
-  // }
-	// public function malls() {
-	// 	return $this->hasMany(\App\Model\MallProduct::class , 'product_id', 'id');
-	// }
+  public function merchant_id($all=null) {
+    if($all!== null){
+      return $this->hasOne('App\Model\Merchant','id','merchant_id');
+    }
+    if(lang()=='ar'){
+      return $this->hasOne('App\Model\Currency','id','merchant_id')->value('name_ar');
+    }else{
+      return $this->hasOne('App\Model\Merchant','id','merchant_id')->value('name_en');
+    }
+  }
 
 	public function files() {
 		return $this->hasMany('App\File', 'relation_id', 'id')->where('file_type', 'product');

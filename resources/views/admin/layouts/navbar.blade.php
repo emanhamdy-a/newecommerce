@@ -179,7 +179,7 @@
             </span>
           </a>
           <ul class="treeview-menu" style="{{ active_menu('sizes')[1] }}">
-            <li class=""><a href="{{ aurl('sizes') }}"><i class="fa fa-info-circle"></i> {{ trans('admin.weights') }}</a></li>
+            <li class=""><a href="{{ aurl('sizes') }}"><i class="fa fa-info-circle"></i> {{ trans('admin.sizes') }}</a></li>
             <li class=""><a href="{{ aurl('sizes/create') }}"><i class="fa fa-plus"></i> {{ trans('admin.add') }}</a></li>
           </ul>
         </li>

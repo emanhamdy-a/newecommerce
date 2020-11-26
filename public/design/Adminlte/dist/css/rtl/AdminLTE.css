@@ -4423,9 +4423,9 @@ ul.wysihtml5-toolbar > li {
 .chat .item > .message {
   margin-right: 55px;
 }
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .main-sidebar,
   .left-side {
     right: -230px;
   }
-}
+} */

@@ -60,6 +60,7 @@
           $('.loading_save_c').addClass('hidden');
           $('.success_message').html('<h1>'+data.message+'</h1>').removeClass('hidden');
           }
+          console.log(data.message);
         },error(response){
           $('.loading_save_c').addClass('hidden');
           var error_li = '';

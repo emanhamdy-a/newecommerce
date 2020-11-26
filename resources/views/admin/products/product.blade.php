@@ -149,10 +149,11 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">{{ trans('admin.delete') }}</h4>
-      </div>
+      </div>l
       {!! Form::open(['route'=>['products.destroy',$product->id],'method'=>'delete']) !!}
       <div class="modal-body">
-        <h4>{{ trans('admin.delete_this',['name'=> $product->title]) }}</h4>
+        <h4>{{ trans('admin.delete_this',
+        ['name'=>lang()=='ar' ? $product->title_ar : $product->title_en]) }}</h4>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-info" data-dismiss="modal">{{ trans('admin.close') }}</button>

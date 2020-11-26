@@ -82,6 +82,9 @@ class AdminController extends Controller {
 		return redirect(aurl('admins'));
 	}
   public function delete($id) {
+    if(admin()->user()->id == $id ){
+      return false;
+    }
     return Admin::find($id)->delete();
     session()->flash('success', trans('admin.deleted_record'));
     return redirect(aurl('users'));

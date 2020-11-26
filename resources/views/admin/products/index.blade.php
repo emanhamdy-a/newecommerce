@@ -31,28 +31,72 @@
             {{trans('admin.reset')}}
           </button>
         </td>
+      </tr >
+      <tr> <td style='padding:8px;'> </td> </tr>
+      <tr>
         <td>
           <select id='productdeprtment_id_search'
-            class='m-y tablefilterselect'>
+            class='tablefilterselect'>
               <option value=''>
                 -- {{trans('admin.department')}}--
               </option>
               @if(lang()=='ar')
-                {{$countries=App\Model\Department::orderBy('dep_name_ar')->pluck('dep_name_ar')}}
+                {{$Departments=App\Model\Department::orderBy('dep_name_ar')->pluck('dep_name_ar')}}
               @else
-                {{$countries=App\Model\Country::orderBy('dep_name_en')->pluck('dep_name_en')}}
+                {{$Departments=App\Model\Department::orderBy('dep_name_en')->pluck('dep_name_en')}}
               @endif
-              @foreach($countries as $country)
+              @foreach($Departments as $Department)
               <option
-                value="{{$country}}">
-                {{$country}}
+                value="{{$Department}}">
+                {{$Department}}
               </option>
               @endforeach
           </select>
         </td>
         <td>
-          <select id='productstatussearch'
+          <select id='productcountry_search'
             class='m-y tablefilterselect'>
+              <option value=''>
+                -- {{trans('admin.countries')}}--
+              </option>
+              @if(lang()=='ar')
+                {{$countries=App\Model\Country::orderBy('country_name_ar')->pluck('country_name_ar')}}
+              @else
+                {{$countries=App\Model\Country::orderBy('country_name_en')->pluck('country_name_en')}}
+              @endif
+              @foreach($countries as $Country)
+              <option
+                value="{{$Country}}">
+                {{$Country}}
+              </option>
+              @endforeach
+          </select>
+        </td>
+        <td>
+          <select id='productmerchant_search'
+            class='m-y tablefilterselect'>
+              <option value=''>
+                -- {{trans('admin.merchants')}}--
+              </option>
+              @if(lang()=='ar')
+                {{$Merchants=App\Model\Merchant::orderBy('name_ar')->pluck('name_ar')}}
+              @else
+                {{$Merchants=App\Model\Merchant::orderBy('name_en')->pluck('name_en')}}
+              @endif
+              @foreach($Merchants as $Merchant)
+              <option
+                value="{{$Merchant}}">
+                {{$Merchant}}
+              </option>
+              @endforeach
+          </select>
+        </td>
+      </tr>
+      <tr> <td style='padding:8px;'> </td> </tr>
+      <tr>
+        <td>
+          <select id='productstatussearch'
+            class='tablefilterselect'>
               <option value=''>-- {{trans('admin.status')}}--</option>
               <option value='active'>active</option>
               <option value='pending'>pending</option>
@@ -124,6 +168,8 @@
                 <th>{{trans('admin.end_offer')}}</th>
                 <th>{{trans('admin.product_vaild')}}</th>
                 <th>{{trans('admin.trade_id')}}</th>
+                <th>{{trans('admin.country_id')}}</th>
+                <th>{{trans('admin.merchants')}}</th>
                 <th>{{trans('admin.price')}}</th>
                 <th>{{trans('admin.manu_id')}}</th>
                 <th>{{trans('admin.color_id')}}</th>
@@ -144,7 +190,7 @@
               <td>{{$product->id}}</td>
               <td>
                 <?php //if(lang()=='ar'){ ?>
-                  {{$product->title ?? ''}}
+                  {{lang()=='ar' ? $product->title_ar : $product->title_en}}
                 <?php //} ?>
               </td>
               <td>
@@ -155,6 +201,12 @@
               <td>{{$product->expired($product->end_at)}}</td>
               <td>
                 {{$product->trade_id ? $product->trade_id():''}}
+              </td>
+              <td>
+                {{$product->country_id ? $product->country_id():''}}
+              </td>
+              <td>
+                {{$product->merchant_id ? $product->merchant_id():''}}
               </td>
               <td>{{$product->price ?? ''}}</td>
               <td>
@@ -171,7 +223,9 @@
                   <img width='150' height='150' src="{{Storage::url('/')}}/{{$product->photo ?? ''}}"/>
                 @endisset
               </td>
-              <td>{{$product->content ?? ''}}</td>
+              <td>
+                {{lang()=='ar' ? $product->content_ar : $product->content_en}}
+              </td>
               <td>
                 <a class='delete_btn btn btn-danger btn-sm'
                 deleted='Course'
@@ -179,7 +233,6 @@
                 href="{{ aurl('/') }}/products/delete/{{$product->id}}">
                 <i class='fa fa-trash'></i></a>
               </td>
-
               <td>
                 <a class='product_edit btn btn-info btn-sm' href="/admin/products/{{$product->id}}/edit"><i class='fa fa-edit'></i></a>
               </td>
@@ -188,7 +241,8 @@
         </tbody>
         <!-- Trigger the modal with a button -->
         <!-- Modal -->
-        <div id="mutlipleDelete" class="modal fade" role="dialog">
+        <div id="mutlipleDelete" class="modal fade"
+          role="dialog">
           <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -228,29 +282,9 @@
             id='productname_search'
             placeholder="{{trans('admin.title')}}" />
           </th>
-          <th>
-
-          </th>
-          <th>
-
-          </th>
-          <th>
-
-          </th>
-          <th>
-
-          </th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <?php for( $i=1 ; $i < 18 ; $i ++){
+           echo"<th></th>";
+          }?>
         </tfoot>
       </table>
     {!! Form::close() !!}
@@ -259,11 +293,11 @@
 </div>
 <!-- /.box -->
 @push('js')
+
 <script>
 
   delete_all();
   $(document).ready( function () {
-
     var table = all_data_Tabl();
 
     push_functions();
@@ -288,7 +322,6 @@
         .search( this.value )
         .draw();
     });
-
     $('#productoffer_search').on( 'change', function () {
       table.columns(5)
         .search( this.value )
@@ -299,11 +332,16 @@
         .search( this.value )
         .draw();
     });
-    // $('#productcountry_search').on( 'change', function () {
-    //   table.columns(7)
-    //     .search( this.value )
-    //     .draw();
-    // });
+    $('#productcountry_search').on( 'change', function () {
+      table.columns(8)
+        .search( this.value )
+        .draw();
+    });
+    $('#productmerchant_search').on( 'change', function () {
+      table.columns(9)
+        .search( this.value )
+        .draw();
+    });
     $('#producttradmark_search').on( 'change', function () {
       table.columns(7)
         .search( this.value )

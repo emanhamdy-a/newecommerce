@@ -57,7 +57,15 @@
         <tbody>
           <?php foreach ($admins as $admin) { ?>
             <tr class='container{{ $admin->id }}'>
-              <td> <input type="checkbox" name="item[]" class="item_checkbox" value="{{ $admin->id ?? '' }}"> </td>
+              <td>
+                <input type="checkbox" name="item[]"
+                class="item_checkbox"
+                value="{{ $admin->id ?? '' }}"
+                <?php if(admin()->user()->id == $admin->id){
+                   echo 'disabled';}
+                ?>
+                >
+              </td>
               <td>{{ $admin->id ?? '' }}</td>
               <td>{{$admin->name}}</td>
               <td>{{$admin->email}}</td>
